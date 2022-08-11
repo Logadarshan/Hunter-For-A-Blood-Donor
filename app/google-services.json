@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "853808316896",
+    "firebase_url": "https://hbda-b41f2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "hbda-b41f2",
+    "storage_bucket": "hbda-b41f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853808316896:android:44c2dd15e43efc3647ab85",
+        "android_client_info": {
+          "package_name": "com.example.hbd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853808316896-v23aj5cieu3e4qdr7mo8mmr3ubot98gg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVI9kNGKGqoe2zUx8Y7CAZRwshZuMIVJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853808316896-v23aj5cieu3e4qdr7mo8mmr3ubot98gg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

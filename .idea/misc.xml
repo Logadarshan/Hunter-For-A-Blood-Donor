@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/drawable/bg.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/drawable/bottommenu.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/drawable/buttonbg.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/drawable/edittextbg.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/drawable/log.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/drawable/logtab.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/drawable/newsbg.xml" value="0.2611111111111111" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_add_news.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_admin_home.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_admin_login.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_donor_home.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_donor_login.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_main.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_register.xml" value="0.20244565217391305" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_signup.xml" value="0.24716786817713698" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_staff_home.xml" value="0.234375" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_testing.xml" value="0.2418478260869565" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_update.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_upload_profile_pic.xml" value="0.24365942028985507" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/activity_view_news.xml" value="0.234375" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/donorlist.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/donornewsviewmenu.xml" value="0.21920289855072464" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/failmessage.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_add_admin.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_add_news.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_add_staff.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_add_user.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_admin_profile.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_appointment.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_change_password.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_donor_news_view.xml" value="0.21920289855072464" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_donor_profile.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_donor_update_profile.xml" value="0.29321930360415394" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_donor_user.xml" value="0.234375" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_donor_view_result.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_login_tab.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_near_me.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_newsfeed.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_selftest.xml" value="0.23692003948667326" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_signup_tab.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_staff_profile.xml" value="0.234375" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_test_question.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_update_news.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_upload_profile_pic.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_user.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_view_donor_profile.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_view_result.xml" value="0.31189083820662766" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/fragment_view_user_profile.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/logintab.xml" value="0.2115036231884058" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/logintabfragment.xml" value="0.2115036231884058" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/newsupdate.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/newsviewmenu.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/signupfragment.xml" value="0.2115036231884058" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/successmessage.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/layout/userlist.xml" value="0.2477355072463768" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/menu/adminmenu.xml" value="0.234375" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/menu/donormenu.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBD/app/src/main/res/menu/staffmenu.xml" value="0.234375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

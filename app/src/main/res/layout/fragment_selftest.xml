@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newsbg"
+    tools:context=".Selftest.SelftestFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/newsbg"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/title_test"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="31dp"
+            android:fontFamily="@font/aclonica"
+            android:text="Self Test"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+
+        <me.biubiubiu.justifytext.library.JustifyTextView
+            android:id="@+id/info_survey"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="81dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="serif-monospace"
+            android:text="ATTENTION : IS YOUR BLOOD SAFE TO BE DONATED? \n\n\n\n
+    Thank you for volunteering to donate your blood. The blood that you donate could help save lives.\n\n
+    We always strive to ensure that the blood given to patients is safe. For that, all donated blood is tested for evidence of infections by Hepatitis B and C, HIV and Syphilis. However, occasionally these tests are unable to detect blood that has only recently being infected. As a result, the infected blood may unknowingly end up being given to patients.\n\n"
+            android:textAlignment="inherit"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/title_survey"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="700dp"
+            android:fontFamily="serif-monospace"
+            android:text="You are ASKED NOT TO DONATE BLOOD if you:"
+            android:textAlignment="viewStart"
+            android:textColor="#ff0000"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/survey_general"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="750dp"
+            android:fontFamily="serif-monospace"
+            android:text="@string/surveyinfo"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="start"/>
+
+        <Button
+            android:id="@+id/testagreeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="1820dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/buttonbg"
+            android:text="Agree"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</ScrollView>

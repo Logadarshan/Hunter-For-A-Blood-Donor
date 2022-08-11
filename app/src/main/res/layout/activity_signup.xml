@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Signup">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/log"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="247dp"
+        android:layout_height="203dp"
+        android:fontFamily="@font/aclonica"
+        android:text="HUNTER FOR A BLOOD DONOR"
+        android:textColor="#F1E6E6"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/logtab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".69"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="60dp">
+
+
+
+            <TextView
+                android:id="@+id/textname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textname"
+                android:hint="Enter your name"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/nameicon"
+                android:drawablePadding="10dp"
+                />
+
+            <TextView
+                android:id="@+id/textic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/name"
+                android:text="Identification Number"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/ic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textic"
+                android:hint="Enter your identification number"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/icicon"
+                android:drawablePadding="10dp"
+                />
+
+            <TextView
+                android:id="@+id/textdob"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ic"
+                android:text="Date of Birth"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textdob"
+                android:hint="Enter your date of birth (dd/m/yyyy)"
+                android:inputType="date"
+                android:focusable="false"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/calendaricon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/dob"
+                android:text="Age"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textage"
+                android:hint="Enter your age"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ageicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textgender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/age"
+                android:text="Gender"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/textgender" >
+
+                <RadioButton
+                    android:id="@+id/radio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textrace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/gender"
+                android:text="Ethnicity"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+
+            <RadioGroup
+                android:id="@+id/ethnicity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textrace" >
+
+                <RadioButton
+                    android:id="@+id/radio_malay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Malay"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_chinese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chinese"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_indian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indian"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_others"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Others"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textmarriage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ethnicity"
+                android:text="Marital Status"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <RadioGroup
+                android:id="@+id/marriage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/textmarriage" >
+
+                <RadioButton
+                    android:id="@+id/radio_single"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Single"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_married"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Married"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="3dp"/>
+                <RadioButton
+                    android:id="@+id/radio_divorceorwidow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Divorced/Widowed"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="3dp"/>
+
+            </RadioGroup>
+
+
+
+
+            <TextView
+                android:id="@+id/textoccupation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/marriage"
+                android:text="Occupation"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/occupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textoccupation"
+                android:hint="Enter your occupation"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/occupationicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textemail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/occupation"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textemail"
+                android:hint="Enter your email"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/emailicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textpassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/email"
+                android:text="Password"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textpassword"
+                android:hint="Enter your password"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/passwordicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textrepassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/password"
+                android:text="Confirm Password"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/repassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textrepassword"
+                android:hint="Confirm your password"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/passwordicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/texthomephone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/repassword"
+                android:text="Homephone Number"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/homephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/texthomephone"
+                android:hint="Enter your homephone number"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/homeicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/texthandphone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/homephone"
+                android:text="Phone Number"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/handphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/texthandphone"
+                android:hint="Enter your phone number"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/phoneicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textofficephone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/handphone"
+                android:text="Office Number"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/officephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textofficephone"
+                android:hint="Enter your office number"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/officeicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textfax"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/officephone"
+                android:text="Fax Number"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/fax"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textfax"
+                android:hint="Enter your fax number"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/faxicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textaddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/fax"
+                android:text="Address"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/caddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textaddress"
+                android:hint="Enter your address"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/addressicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textstate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/caddress"
+                android:text="State"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/cstate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textstate"
+                android:hint="Enter your state"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/stateicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/textpost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/cstate"
+                android:text="Postcode"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/cpost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textpost"
+                android:hint="Enter your postcode"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/zipicon"
+                android:drawablePadding="10dp" />
+
+
+
+            <TextView
+                android:id="@+id/textblood"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/cpost"
+                android:text="Blood Group"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/bloodgroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textblood"
+                android:hint="Enter your Blood Group"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/bloodicon"
+                android:drawablePadding="10dp" />
+
+            <TextView
+                android:id="@+id/texthos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/bloodgroup"
+                android:text="Hospital"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/hosorg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/texthos"
+                android:hint="Enter your Hospital"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/orgicon"
+                android:drawablePadding="10dp" />
+
+
+
+
+
+            <Button
+                android:id="@+id/signupBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hosorg"
+                android:layout_marginTop="50dp"
+                android:text="Submit"
+                android:background="@drawable/buttonbg"/>
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

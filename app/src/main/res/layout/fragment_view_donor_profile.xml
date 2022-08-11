@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newsbg"
+    tools:context=".Users.ViewDonorProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp" >
+
+        <TextView
+            android:id="@+id/donorusersname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="User Name"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/nameicon"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:id="@+id/donorusersage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Age"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/ageicon"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:id="@+id/donorusersblood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Blood Group"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/bloodicon"
+            android:drawablePadding="10dp"/>
+
+
+        <TextView
+            android:id="@+id/donorusersgender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Gender"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/gendericon"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:id="@+id/donorusersphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Email"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/emailicon"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:id="@+id/donorusersemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Phone Number"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/phoneicon"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:id="@+id/donorusersadd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Address"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/addressicon"
+            android:drawablePadding="10dp"/>
+
+
+        <TextView
+            android:id="@+id/donorusersoccupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Occupation"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/occupationicon"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:id="@+id/donorusershos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Organization"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/orgicon"
+            android:drawablePadding="10dp"/>
+
+        <Button
+            android:id="@+id/backdonorBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hosorg"
+            android:layout_marginTop="50dp"
+            android:text="Back"
+            android:background="@drawable/buttonbg"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

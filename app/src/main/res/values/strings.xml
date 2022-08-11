@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">HBD</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="survey">
+
+
+        <br>ATTENTION : IS YOUR BLOOD SAFE TO BE DONATED? </br>
+        <br>\n\n</br>
+        <br>\n\n</br>
+        <br> Thank you for volunteering to donate your blood. The blood that you donate could help save lives.</br>
+        <br>\n\n</br>
+        <br> We always strive to ensure that the blood given to patients is safe. For that, all donated blood is tested for evidence of infections by Hepatitis B and C, HIV and Syphilis. However, occasionally these tests are unable to detect blood that has only recently being infected. As a result, the infected blood may unknowingly end up being given to patients.</br>
+        <br>\n\n</br>
+        <br> Therefore, in order to help us ensure that the blood donated is safe for transfusion, you are requested to carefully read the statement below before donating your blood.</br>
+<br>\n\n</br>
+    </string>
+
+
+    <string name="surveyinfo">
+
+        <br> * know or suspect you may have HIV, suffering from/carrier of Hepatitis B or Hepatitis C, or being infected with Syphilis or other Sexually Transmitted Disease (STD)</br>
+        <br>\n\n</br>
+        <br> * lead or had led a life style involving CHANGING MULTIPLE SEXUAL PARTNERS</br>
+        <br>\n\n</br>
+        <br></br>
+        <br> * are a man who have had sex with another man or bisexual</br>
+        <br>\n\n</br>
+        <br> * have ever made payment or received payment for having sex</br>
+        <br>\n\n</br>
+        <br> * have had sex with commercial sex worker (prostitute)</br>
+        <br>\n\n</br>
+        <br> * have had taken illegal drugs intravenously</br>
+        <br>\n\n</br>
+        <br> * have ever had sex with anyone from any of the above group</br>
+        <br>\n\n</br>
+        <br> You are also asked NOT TO donate just to test your blood. Blood test can be performed at any nearby Health Clinic. If you have any questions, do not hesitate to ask our Medical Officer on duty for help.</br>
+        <br>\n\n</br>
+
+
+
+    </string>
+
+    <string-array name="hospital">
+        <item>ABC</item>
+        <item>BCD</item>
+        <item>DEF</item>
+        <item>GFH</item>
+    </string-array>
+
+
+</resources>

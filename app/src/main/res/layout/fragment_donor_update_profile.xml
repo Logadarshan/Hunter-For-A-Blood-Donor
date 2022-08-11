@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newsbg"
+    tools:context=".Profile.DonorUpdateProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="278dp"
+            android:background="@drawable/newsbg"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/dprofileimg"
+                android:layout_width="124dp"
+                android:layout_height="124dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/buttonbg" />
+
+
+
+
+            <TextView
+                android:id="@+id/donorname1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@+id/dprofileimg"
+                android:fontFamily="@font/aclonica"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/donormail1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/donorname1"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/dprofileimg"
+                android:fontFamily="@font/aclonica"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/usertypetext1"
+                android:layout_width="130dp"
+                android:layout_height="34dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="273dp"
+                android:layout_marginBottom="7dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donoric1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:hint="Identification Number"
+                android:textColor="@color/black"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/icicon"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black" />
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donorblood1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Blood Group"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/bloodicon"
+                    android:drawablePadding="10dp"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donorage1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Age"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/ageicon"
+                    android:drawablePadding="10dp" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donordob1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Date of Birth"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/calendaricon"
+                    android:drawablePadding="10dp" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/textgender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/age"
+                android:text="Gender"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+
+            <RadioGroup
+                android:id="@+id/donorgender1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/textgender" >
+
+                <RadioButton
+                    android:id="@+id/radio_male1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_female1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"/>
+
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/textrace1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/gender"
+                android:text="Ethnicity"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+
+            <RadioGroup
+                android:id="@+id/donorethnicity1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/textrace1" >
+
+                <RadioButton
+                    android:id="@+id/radio_malay1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Malay"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_chinese1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chinese"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_indian1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indian"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_others1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Others"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textmarriage1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/ethnicity"
+                android:text="Marital Status"
+                android:textColor="@color/black"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <RadioGroup
+                android:id="@+id/donorstatus1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/textmarriage1" >
+
+                <RadioButton
+                    android:id="@+id/radio_single1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Single"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:id="@+id/radio_married1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Married"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="3dp"/>
+                <RadioButton
+                    android:id="@+id/radio_divorceorwidow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Divorced/Widowed"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="3dp"/>
+
+            </RadioGroup>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donoroccupation1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Occupation"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/occupationicon"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donorphoennum1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Phone Number"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/phoneicon"
+                    android:drawablePadding="10dp"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donorhousenum1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:hint="House Number"
+                android:textColor="@color/black"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/homeicon"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donorfax1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Fax"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/faxicon"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donoraddress1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Address"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/addressicon"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donorstate1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="State"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/stateicon"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donorpostcode1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Postcode"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/zipicon"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/donororg1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextbg"
+                android:textColor="@color/black"
+                android:hint="Organization"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="294dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/orgicon"
+                    android:textColor="@color/black"
+                    android:drawablePadding="10dp" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/updateprofileBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/buttonbg"
+                android:onClick="updateprofile"
+                android:text="Update"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/changepassword"
+                android:layout_width="393dp"
+                android:layout_height="39dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="273dp"
+                android:layout_marginBottom="7dp"
+                android:text="Please Click this if you wish to change the password."
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>
