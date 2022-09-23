@@ -20,9 +20,10 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginTop="31dp"
+            android:layout_marginStart="20dp"
             android:fontFamily="@font/aclonica"
             android:text="Self Test"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textSize="30sp" />
 

@@ -2,10 +2,13 @@ package com.example.hbd.News;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.example.hbd.Selftest.TestQuestionFragment.TAG;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.hbd.Others.Common;
 import com.example.hbd.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,16 +32,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddNewsFragment extends Fragment {
 
     TextInputLayout newstitle, newsdesc;
     TextInputEditText newstitletext, newsdesctext;
     Button savebtn;
-    ImageButton imgnewsbtn;
+    ImageButton imgnewsbtn,backbtn;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseStorage firebaseStorage;
@@ -45,6 +55,8 @@ public class AddNewsFragment extends Fragment {
     Uri imageUrl=null;
     ProgressDialog progressDialog;
     long nid = 0;
+    CollectionReference collectionReference;
+    FirebaseFirestore firebaseFirestore;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,12 +72,13 @@ public class AddNewsFragment extends Fragment {
         newsdesctext = v.findViewById(R.id.newsdesctext);
         savebtn = v.findViewById(R.id.savebtn);
         imgnewsbtn = v.findViewById(R.id.imagenewsBtn);
+        backbtn = v.findViewById(R.id.backBtn);
 
         firebaseDatabase  = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("news");
+        databaseReference = firebaseDatabase.getReference().child("News");
         firebaseStorage   = FirebaseStorage.getInstance();
         progressDialog = new ProgressDialog(this.getContext());
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         // Open gallery
       imgnewsbtn.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +87,15 @@ public class AddNewsFragment extends Fragment {
               Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
               intent.setType("image/url*");
               startActivityForResult(intent,Gallery_Code);
+          }
+      });
+
+      backbtn.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Fragment addapp = new NewsfeedFragment();
+              FragmentTransaction addappoint = getActivity().getSupportFragmentManager().beginTransaction();
+              addappoint.replace(R.id.container,addapp).commit();
           }
       });
 
@@ -106,18 +128,6 @@ public class AddNewsFragment extends Fragment {
                 final String ndesc = newsdesctext.getText().toString().trim();
 
 
-                // Generate unique id
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        nid = (snapshot.getChildrenCount());
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
 
 
                 // If failed
@@ -145,12 +155,26 @@ public class AddNewsFragment extends Fragment {
 
                                     DatabaseReference newPost = databaseReference.push();
 
+                                    String id = Common.generateString(6);
+
+                                    Map<String,Object> map = new HashMap<>();
+                                    map.put("Id" , id);
+                                    map.put("Title" , ntitle);
+                                    map.put("Des", ndesc);
+                                    map.put("Image",task.getResult().toString());
 
 
-                                    databaseReference.child(String.valueOf(nid+1)).child("Id").setValue(String.valueOf(nid+1));
-                                    databaseReference.child(String.valueOf(nid+1)).child("Title").setValue(ntitle);
-                                    databaseReference.child(String.valueOf(nid+1)).child("Des").setValue(ndesc);
-                                    databaseReference.child(String.valueOf(nid+1)).child("Image").setValue(task.getResult().toString());
+                                    collectionReference = FirebaseFirestore.getInstance()
+                                            .collection("News");
+
+                                    collectionReference.document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Log.d(TAG,"News Created");
+                                        }
+                                    });
+
+
                                     progressDialog.dismiss();
                                 }
                             });

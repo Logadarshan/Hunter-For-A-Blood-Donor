@@ -1,6 +1,11 @@
 package com.example.hbd.Users;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +16,8 @@ import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
+import com.example.hbd.Login;
 import com.example.hbd.Model.UserModel;
 import com.example.hbd.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,24 +25,54 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class AddUserFragment extends Fragment {
 
 
-    EditText adminstaffname,adminstaffemail,adminstaffpassword,adminstafforg;
+    EditText adminstaffname,adminstaffemail,adminstaffpassword,adminstafforg,adminstaffostate;
     Button addadminstaff;
     RadioGroup radioGroupUser;
     RadioButton radioButtonUser;
 
     FirebaseDatabase firebaseDatabase;
     FirebaseUser firebaseUser;
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth,fAuth1;
     DatabaseReference databaseReference;
-    FirebaseFirestore fStore;
+    FirebaseFirestore firebaseFirestore;
     View V;
+
+    Unbinder unbinder;
+    String adduser;
+    Dialog dialog;
+    DatabaseReference databaseReference2;
+    String userID;
+
+    String  uhos,uemail, upassword, ostate;
+
+    String uhos1, ostate1;
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+    }
 
 
 
@@ -45,53 +80,36 @@ public class AddUserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         V = inflater.inflate(R.layout.fragment_add_user, container, false);
+        unbinder = ButterKnife.bind(this,V);
 
         adminstaffname = V.findViewById(R.id.uusername);
         adminstaffemail = V.findViewById(R.id.useremail);
         adminstaffpassword = V.findViewById(R.id.userpassword);
-        adminstafforg = V.findViewById(R.id.userhos);
+        adminstaffostate = V.findViewById(R.id.userostate12);
+        adminstafforg = V.findViewById(R.id.useruhos12);
         addadminstaff = V.findViewById(R.id.adduserdataBtn);
         radioGroupUser = V.findViewById(R.id.user);
-
+        dialog = new Dialog(this.getContext());
+        firebaseFirestore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        userID = firebaseUser.getUid();
+        setCity();
         // add admin and staff details
         addadminstaff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                firebaseDatabase = FirebaseDatabase.getInstance();
-                int selectedUserId = radioGroupUser.getCheckedRadioButtonId();
-                radioButtonUser = V.findViewById(selectedUserId);
 
-                String uname = adminstaffname.getText().toString();
-                String uhos = adminstafforg.getText().toString();
-                String uemail = adminstaffemail.getText().toString();
-                String upassword = adminstaffpassword.getText().toString();
-                String urepassword = "-";
-                String uic = "-";
-                String udob = "-";
-                String uage = "-";
-                String uhomephone = "-";
-                String uhandphone = "-";
-                String ufax = "-";
-                String ucaddress = "-";
-                String ucpost = "-";
-                String ucstate = "-";
-                String ugender = "-";
-                String urace = "-";
-                String umarriage = "-";
-                String ublood = "-";
-                String uoccupation = "-";
-                String usertype = radioButtonUser.getText().toString();
-                String userimages = "/";
+                checkEmail();
+                 uemail = adminstaffemail.getText().toString();
+                 upassword = adminstaffpassword.getText().toString();
+                 uhos1 = adminstafforg.getText().toString();
+                 ostate1 =adminstaffostate.getText().toString();
 
 
-                // staff details insert into database
-                addstaffdata(uname,uic,udob,uage,ugender,urace,umarriage,uoccupation,uemail,upassword,urepassword,
-                        uhomephone,uhandphone,ufax,ucaddress,ucpost,ucstate,usertype,ublood,uhos,userimages);
-
+                adddetails(uemail,upassword,uhos1,ostate1);
 
             }
         });
@@ -101,44 +119,139 @@ public class AddUserFragment extends Fragment {
         return V;
     }
 
-    // pass staff and admin details
-    private void addstaffdata(String uname, String uic, String udob, String uage, String ugender, String urace,
-                              String umarriage, String uoccupation, String uemail, String upassword, String urepassword,
-                              String uhomephone, String uhandphone, String ufax, String ucaddress, String ucpost, String ucstate,
-                              String usertype, String ublood, String uhos, String userimages) {
+    private void setCity() {
 
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference2.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                UserModel userModel = snapshot.getValue(UserModel.class);
+                if(userModel != null){
+                    uhos = userModel.getUhos();
+                    ostate = userModel.getOstate();
+
+                    adminstaffostate.setText(ostate);
+                    adminstafforg.setText(uhos);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+    }
+
+    private void adddetails(String uemail, String upassword, String uhos1, String ostate1) {
 
         FirebaseAuth.getInstance();
         fAuth.createUserWithEmailAndPassword(uemail,upassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                // if task is successful
-                if(task.isSuccessful()){
-                    UserModel userModel = new UserModel(uname,uic,udob,uage,ugender,urace,umarriage,uoccupation,uemail,upassword,urepassword,
-                            uhomephone,uhandphone,ufax,ucaddress,ucpost,ucstate,usertype,ublood,uhos,userimages);
-
+                if (task.isSuccessful()){
                     firebaseUser = fAuth.getCurrentUser();
-                    String userID = firebaseUser.getUid();
+                    adduser = firebaseUser.getUid();
+                    firebaseDatabase = FirebaseDatabase.getInstance();
+                    int selectedUserId = radioGroupUser.getCheckedRadioButtonId();
+                    radioButtonUser = V.findViewById(selectedUserId);
+
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("ostate",ostate1);
+                    user.put("usertype",radioButtonUser.getText().toString());
+                    user.put("uname",adminstaffname.getText().toString());
+                    user.put("uhos",uhos1);
+                    user.put("uemail",uemail);
+                    user.put("upassword",upassword);
+                    user.put("userid",adduser);
+
+                    user.put("uage","-");
+                    user.put("ublood","-");
+                    user.put("ucaddress","-");
+                    user.put("ucpost","-");
+                    user.put("ucstate","-");
+                    user.put("udob","-");
+                    user.put("ufax","-");
+                    user.put("ugender","-");
+                    user.put("uhandphone","-");
+                    user.put("uhomephone","-");
+                    user.put("uic","-");
+                    user.put("umarriage","-");
+                    user.put("uoccupation","-");
+                    user.put("urace","-");
+                    user.put("urepassword","-");
+                    user.put("userprofimage","-");
+
 
                     databaseReference= FirebaseDatabase.getInstance().getReference("Users");
-                    databaseReference.child(userID).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    databaseReference.child(adduser).setValue(user);
+
+                    DocumentReference documentReference = firebaseFirestore.collection("User").document(adduser);
+                    documentReference.set(user);
+
+                    dialog.setContentView(R.layout.verify);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    Button btncon1 = dialog.findViewById(R.id.continueappBtn1);
+
+                    // Navigate to selftest Page
+                    btncon1.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-
-                            firebaseUser.sendEmailVerification();
-
-                            // naviagte to user interface
-                            Fragment user = new UserFragment();
-                            FragmentTransaction fragmentTransactiont = getActivity().getSupportFragmentManager().beginTransaction();
-                            fragmentTransactiont.replace(R.id.container,user).commit();
+                        public void onClick(View v) {
                             fAuth.signOut();
-                            fAuth.signInAnonymously();
+                            startActivity(new Intent(getContext(), Login.class));
+                            dialog.dismiss();
+
                         }
                     });
+
+                    dialog.show();
+
+
+
+
                 }
+
+
+
+
+
+
+
+
             }
         });
 
+
+
     }
+
+    private void checkEmail(){
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.fetchSignInMethodsForEmail(adminstaffemail.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+
+                        if (isNewUser) {
+                            Log.e("TAG", "Is New User!");
+                        } else {
+                            adminstaffemail.setError("User already exists");
+                        }
+
+                    }
+                });
+    }
+
+
+
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newsbg"
+    android:background="#F9C1B1"
     tools:context=".Users.ViewUserProfileFragment">
 
 
@@ -13,6 +13,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="30dp" >
+
+
+        <ImageView
+            android:id="@+id/adminviewuserprofileimg"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/buttonbg" />
 
         <TextView
             android:id="@+id/usersname"

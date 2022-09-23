@@ -53,6 +53,7 @@
                 android:text="Sorry you are not eligible to donate blood for now. Maybe try later. Thank you."
                 android:textSize="23dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.511"
                 app:layout_constraintStart_toStartOf="parent"

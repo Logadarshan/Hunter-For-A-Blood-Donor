@@ -17,10 +17,13 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.hbd.Home.AdminHome;
 import com.example.hbd.Home.DonorHome;
 import com.example.hbd.Home.StaffHome;
+import com.example.hbd.Others.DeletedAccount;
+import com.example.hbd.Others.preferences;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,8 +37,8 @@ public class Login extends AppCompatActivity {
 
 
     ViewPager viewPager;
-    EditText memail;
-    EditText mpassword;
+    TextInputLayout memail;
+    TextInputLayout mpassword;
     TextView forgotpass;
     Button loginbtn;
     TextView textsignup;
@@ -46,7 +49,7 @@ public class Login extends AppCompatActivity {
 
     // validate email
     private Boolean validateEmail(){
-        String demail = memail.getText().toString();
+        String demail = memail.getEditText().getText().toString();
 
         if(demail.isEmpty()){
             memail.setError("Email field cannot be empty");
@@ -60,7 +63,7 @@ public class Login extends AppCompatActivity {
 
     // validate password
     private Boolean validatePassword(){
-        String dpassword = mpassword.getText().toString();
+        String dpassword = mpassword.getEditText().getText().toString();
 
         if(dpassword.isEmpty()){
             mpassword.setError("Password field cannot be empty");
@@ -86,6 +89,9 @@ public class Login extends AppCompatActivity {
                     finish();
                 }else if(preferences.getDataAs(this).equals("Admin")){
                     startActivity(new Intent( Login.this, AdminHome.class));
+                    finish();
+                }else if(preferences.getDataAs(this).equals("Not")){
+                    startActivity(new Intent( Login.this, DeletedAccount.class));
                     finish();
                 }
 
@@ -130,8 +136,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String demail = memail.getText().toString().trim();
-                String dpassword = mpassword.getText().toString().trim();
+                String demail = memail.getEditText().getText().toString().trim();
+                String dpassword = mpassword.getEditText().getText().toString().trim();
 
                 if(!validateEmail()){
                     return;
@@ -183,6 +189,19 @@ public class Login extends AppCompatActivity {
                                         startActivity(new Intent(getApplicationContext(), StaffHome.class));
 
                                     }
+
+
+                                    if(usertype.equals("Not")){
+
+                                        preferences.setDataLogin(Login.this,true);
+                                        preferences.setDataAs(Login.this, "Not");
+
+                                        Toast.makeText(Login.this, "Your Account Not Available", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), DeletedAccount.class));
+
+                                    }
+
+
 
                                 }
 

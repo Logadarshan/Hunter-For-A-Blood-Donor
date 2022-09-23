@@ -24,6 +24,8 @@ import com.example.hbd.News.NewsfeedFragment;
 import com.example.hbd.News.UpdateNewsFragment;
 import com.example.hbd.R;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.jsibbold.zoomage.ZoomageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -107,9 +109,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                      FirebaseDatabase.getInstance().getReference().child("news").child(newsModel.getId()).removeValue();
-
-
+                        FirebaseFirestore.getInstance().collection("News").document(newsModel.getId()).delete();
+                        Toast.makeText(holder.nid.getContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -142,7 +143,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        ImageView newimg;
+        ZoomageView  newimg;
         TextView ntitle, ndesc,nid;
         ImageButton ndeletebtn,nupdatebtn;
 
@@ -160,11 +161,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
 
         }
-
-
-
-
-
 
     }
 }

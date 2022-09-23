@@ -3,7 +3,7 @@ package com.example.hbd.Model;
 public class TestModel {
 
     String dquestion1, dquestion2,  dquestion3, dquestion4, dquestion5,
-    dquestion6,  dquestion7,  dquestion8, dquestion9,  dquestion10, resultans,usertestid;
+    dquestion6,  dquestion7,  dquestion8, dquestion9,  dquestion10, resultans,usertestid,testid;
 
 
     public TestModel() {
@@ -12,7 +12,7 @@ public class TestModel {
 
     public TestModel(String dquestion1, String dquestion2, String dquestion3,
                      String dquestion4, String dquestion5, String dquestion6, String dquestion7, String dquestion8,
-                     String dquestion9, String dquestion10, String resultans, String usertestid) {
+                     String dquestion9, String dquestion10, String resultans, String usertestid, String testid) {
 
         this.dquestion1 = dquestion1;
         this.dquestion2 = dquestion2;
@@ -26,6 +26,7 @@ public class TestModel {
         this.dquestion10 = dquestion10;
         this.resultans = resultans;
         this.usertestid = usertestid;
+        this.testid = testid;
     }
 
 
@@ -124,5 +125,13 @@ public class TestModel {
 
     public void setUsertestid(String usertestid) {
         this.usertestid = usertestid;
+    }
+
+    public String getTestid() {
+        return testid;
+    }
+
+    public void setTestid(String testid) {
+        this.testid = testid;
     }
 }

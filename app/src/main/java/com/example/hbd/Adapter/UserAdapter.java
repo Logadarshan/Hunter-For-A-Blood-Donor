@@ -1,11 +1,17 @@
 package com.example.hbd.Adapter;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,19 +22,36 @@ import com.example.hbd.Model.UserModel;
 import com.example.hbd.R;
 import com.example.hbd.Users.UserFragment;
 import com.example.hbd.Users.ViewUserProfileFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     UserFragment context;
     List<UserModel> userModelList;
-
+    FirebaseFirestore firebaseFirestore;
+    FirebaseDatabase firebaseDatabase;
 
     public UserAdapter(UserFragment context, List<UserModel> userModelList) {
         this.context = context;
         this.userModelList = userModelList;
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
 
@@ -41,7 +64,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         // display staff and admin details
 
@@ -49,6 +72,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         holder.username.setText(userModel.getUname());
         holder.userblood.setText(userModel.getUblood());
         holder.useremail.setText(userModel.getUemail());
+        holder.userid.setText(userModel.getUserid());
+
 
 
         // display staff and admin profile picture
@@ -69,7 +94,87 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,new ViewUserProfileFragment(userModel.getUname(),userModel.getUblood(),userModel.getUage(),userModel.getUgender(),
-                        userModel.getUemail(), userModel.getUhandphone(), userModel.getUcaddress(), userModel.getUhos())).addToBackStack(null).commit();
+                        userModel.getUemail(), userModel.getUhandphone(), userModel.getUcaddress(), userModel.getUhos(), userModel.getUserprofimage())).addToBackStack(null).commit();
+
+
+            }
+        });
+
+
+
+        holder.deleteuserbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.userid.getContext());
+                builder.setTitle("Are you Sure?");
+                builder.setMessage("Deleted data can't be Undo.");
+
+                // if successfully deleted
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Map<String,Object> map = new HashMap<>();
+                        map.put("uemail" , userModel.getUemail());
+                        map.put("ostate" , userModel.getOstate());
+                        map.put("uhos" , userModel.getUhos());
+                        map.put("uname" , userModel.getUname());
+                        map.put("userid" , userModel.getUserid());
+                        map.put("usertype" , "Not");
+
+                        String userid = userModel.getUserid();
+
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+
+                        databaseReference.child(holder.userid.getText().toString()).updateChildren(map);
+
+                        FirebaseFirestore.getInstance().collection("User").whereEqualTo("userid", userid)
+                                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                                if(task.isSuccessful()){
+
+                                    DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                                    String documentID = documentSnapshot.getId();
+
+                                        firebaseFirestore.collection("User")
+                                                .document(documentID).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+
+                                            }
+                                        });
+                                }
+
+                            }
+                        });
+
+
+
+                    }
+                });
+
+                // failed to delete
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(holder.userid.getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+                builder.show();
+
+
+
+
+
+
+
 
 
             }
@@ -85,10 +190,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         return userModelList.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView username, userblood, useremail;
+        TextView username, userblood, useremail,userid;
         Button deleteuserbtn,viewprofilebtn;
         ImageView uprofile;
 
@@ -101,6 +207,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
             userblood = itemView.findViewById(R.id.bloodgrouptext);
             useremail = itemView.findViewById(R.id.emailtext);
             uprofile = itemView.findViewById(R.id.userprofilepicture);
+            userid = itemView.findViewById(R.id.usersusertype);
 
 
             viewprofilebtn = itemView.findViewById(R.id.viewprofileBtn);

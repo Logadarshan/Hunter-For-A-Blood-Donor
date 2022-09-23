@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Appointment.AppointmentStep4Fragment"
+    android:background="@drawable/logtab"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/log"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="251dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/aclonica"
+        android:text="HUNTER FOR A BLOOD DONOR"
+        android:textColor="#F1E6E6"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/texttitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Thank you for making an appointment"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:padding="6dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="215dp"/>
+
+    <TextView
+        android:id="@+id/textbook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Booking Information : "
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:padding="6dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="260dp"/>
+
+
+    <TextView
+        android:id="@+id/uname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/nameicon"
+        android:drawablePadding="10dp"
+        android:hint="Enter your name"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="310dp"/>
+
+    <TextView
+        android:id="@+id/uhos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/orgicon"
+        android:drawablePadding="10dp"
+        android:hint="Enter your hospital"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="370dp"/>
+
+    <TextView
+        android:id="@+id/udate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/dateicon"
+        android:drawablePadding="10dp"
+        android:hint="Enter your date"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="430dp"/>
+
+    <TextView
+        android:id="@+id/utime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/timeicon"
+        android:drawablePadding="10dp"
+        android:hint="Enter your time"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="490dp" />
+
+    <Button
+        android:id="@+id/saveapp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book"
+        android:background="@drawable/buttonbg"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="560dp"/>
+
+</FrameLayout>

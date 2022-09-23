@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.hbd.Model.NewsModel;
 import com.example.hbd.News.DonorNewsViewFragment;
 import com.example.hbd.R;
+import com.jsibbold.zoomage.ZoomageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -64,7 +65,7 @@ public class DonorNewsAdapter extends RecyclerView.Adapter<DonorNewsAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        ImageView newimg;
+        ZoomageView newimg;
         TextView ntitle, ndesc;
         ImageButton ndeletebtn,nupdatebtn;
 

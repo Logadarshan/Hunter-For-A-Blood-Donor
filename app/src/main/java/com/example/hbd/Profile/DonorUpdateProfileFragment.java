@@ -2,21 +2,26 @@ package com.example.hbd.Profile;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.example.hbd.Selftest.TestQuestionFragment.TAG;
+
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,9 +31,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.hbd.ChangePasswordFragment;
 import com.example.hbd.Model.UserModel;
 import com.example.hbd.R;
+import com.example.hbd.Signup;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,19 +45,33 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.jsibbold.zoomage.ZoomageView;
 import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class DonorUpdateProfileFragment extends Fragment {
 
     TextInputLayout ic,age,dob,occupation,phonenum,housenum,fax,
             address,postcode,state,password,repassword,blooooood,orgg;
-    TextView name, email,user1,changepass;
+    TextView name, email,user1,changepass, gen, rac, sta;
     Button updatebtn;
-    ImageView profilepic, image;
+    ZoomageView profilepic, image;
     FirebaseUser firebaseUser;
+    FirebaseFirestore firebaseFirestore;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
     DatabaseReference databaseReference;
@@ -62,10 +83,11 @@ public class DonorUpdateProfileFragment extends Fragment {
     RadioGroup radioUpdateGroupGender,radioUpdateGroupEthnicity, radioUpdateGroupMarriage;
     RadioButton radioButtonUpdateGender,radioButtonUpdateEthnicity, radioButtonUpdateMarriage;
     View v;
+    TextInputEditText dob1;
 
 
     String uname,uic,udob,uage,ugender,urace,umarriage,uoccupation,uemail,upassword,urepassword,
-            uhomephone,uhandphone,ufax,ucaddress,ucpost,ucstate,usertype,ublood,uhos,utype,userimages;
+            uhomephone,uhandphone,ufax,ucaddress,ucpost,ucstate,usertype,ublood,uhos,utype,userimages,userid,ostate;
 
 
     @Override
@@ -78,7 +100,7 @@ public class DonorUpdateProfileFragment extends Fragment {
         email = v.findViewById(R.id.donormail1);
 
         user1 = v.findViewById(R.id.usertypetext1);
-        profilepic = v.findViewById(R.id.dprofileimg);
+        profilepic = v.findViewById(R.id.dprofileimg12);
         ic = v.findViewById(R.id.donoric1);
         blooooood = v.findViewById(R.id.donorblood1);
         age = v.findViewById(R.id.donorage1);
@@ -98,11 +120,17 @@ public class DonorUpdateProfileFragment extends Fragment {
 
         changepass = v.findViewById(R.id.changepassword);
 
+        gen = v.findViewById(R.id.donorgender12);
+        rac = v.findViewById(R.id.donorrace12);
+        sta = v.findViewById(R.id.donormaritial12);
+        dob1 = v.findViewById(R.id.dob1);
+
         // authenticate user
         fAuth = FirebaseAuth.getInstance();
         firebaseUser = fAuth.getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference("DisplayPics");
         Uri uri = firebaseUser.getPhotoUrl();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         // display user profile picture
         Picasso.get().load(uri).into(profilepic);
@@ -111,11 +139,36 @@ public class DonorUpdateProfileFragment extends Fragment {
         showUserProfile(firebaseUser);
 
 
+
+
+        dob1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                datePicker = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        dob.getEditText().setText(dayOfMonth + "/" + (month+1) + "/" + year);
+
+
+                    }
+                },year,month,day);
+                datePicker.show();
+
+            }
+        });
+
+
         // update user profile details
         updatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updateUserProfile(firebaseUser);
+                uploadimagefile();
             }
         });
 
@@ -181,10 +234,17 @@ public class DonorUpdateProfileFragment extends Fragment {
 
                                     String t = task.getResult().toString();
 
+                                    DocumentReference documentReference = firebaseFirestore.collection("User").document(firebaseUser.getUid());
 
-                                    String uid1 = firebaseUser.getUid();
+                                    Map<String,Object> user = new HashMap<>();
+                                    user.put("userprofimage", task.getResult().toString());
 
-                                    databaseReference.child(uid1).child("userprofimage").setValue(task.getResult().toString());
+                                    documentReference.update(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Log.d(TAG,"User Profile Created" + firebaseUser.getUid());
+                                        }
+                                    });
 
                                 }
                             });
@@ -252,37 +312,53 @@ public class DonorUpdateProfileFragment extends Fragment {
         uemail = email.getText().toString();
         upassword = "";
         urepassword = "";
-
+        userid = firebaseUser.getUid();
 
 
         // Update in the database
         UserModel userModel = new UserModel(uname,uic,udob,uage,ugender,urace,umarriage,uoccupation,uemail,upassword,urepassword,
-                uhomephone,uhandphone,ufax,ucaddress,ucpost,ucstate,usertype,ublood,uhos,userimages);
+                uhomephone,uhandphone,ufax,ucaddress,ucpost,ucstate,usertype,ublood,uhos,userimages,userid,ostate);
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
-        String userID = firebaseUser.getUid();
+        DocumentReference documentReference = firebaseFirestore.collection("User").document(firebaseUser.getUid());
 
-        databaseReference.child(userID).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+        Map<String,Object> map = new HashMap<>();
+        map.put("uname" , uname);
+        map.put("uemail", uemail);
+        map.put("uic" , uic);
+        map.put("udob" , udob);
+        map.put("uage" , uage);
+        map.put("ugender", ugender);
+        map.put("urace", urace);
+        map.put("umarriage", umarriage);
+        map.put("uoccupation", uoccupation);
+        map.put("uhomephone", uhomephone);
+        map.put("uhandphone", uhandphone);
+        map.put("ufax", ufax);
+        map.put("ucaddress", ucaddress);
+        map.put("ucpost", ucpost);
+        map.put("ucstate", ucstate);
+        map.put("ublood", ublood);
+        map.put("uhos", uhos);
+        map.put("usertype", usertype);
+        map.put("userid", userid);
+
+
+        documentReference.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    uploadimagefile();
-                    UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(uname).build();
-                    firebaseUser.updateProfile(profileChangeRequest);
+            public void onSuccess(Void unused) {
+                Log.d(TAG,"User Profile Created" + firebaseUser.getUid());
 
+                Fragment donorprofile = new DonorProfileFragment();
+                FragmentTransaction dprofile = getActivity().getSupportFragmentManager().beginTransaction();
+                dprofile.replace(R.id.container,donorprofile).commit();
+                Toast.makeText(getActivity(), "Successfully updated", Toast.LENGTH_SHORT).show();
 
-                    // Navigate to View Profile Page
-                    Fragment donorprofile = new DonorProfileFragment();
-                    FragmentTransaction dprofile = getActivity().getSupportFragmentManager().beginTransaction();
-                    dprofile.replace(R.id.container,donorprofile).commit();
-
-
-                }
 
             }
         });
+
 
     }
 
@@ -290,90 +366,78 @@ public class DonorUpdateProfileFragment extends Fragment {
     // display user profile details
     private  void showUserProfile(FirebaseUser firebaseUser){
 
+
+
         String userID = firebaseUser.getUid();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+
+        DocumentReference documentReference = firebaseFirestore.collection("User").document(userID);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                UserModel userModel = snapshot.getValue(UserModel.class);
-                if(userModel != null){
-
-                    uemail = userModel.getUemail();
-                    uname = userModel.getUname();
-                    uic = userModel.getUic();
-                    udob = userModel.getUdob();
-                    uage = userModel.getUage();
-                    ugender = userModel.getUgender();
-                    urace = userModel.getUrace();
-                    umarriage = userModel.getUmarriage();
-                    uoccupation = userModel.getUoccupation();
-                    uhandphone = userModel.getUhandphone();
-                    uhomephone = userModel.getUhomephone();
-                    ufax = userModel.getUfax();
-                    ucaddress = userModel.getUcaddress();
-                    ucpost = userModel.getUcpost();
-                    ucstate = userModel.getUcstate();
-                    ublood = userModel.getUblood();
-                    uhos = userModel.getUhos();
-                    usertype = userModel.getUsertype();
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
 
 
-                    name.setText(uname);
-                    email.setText(uemail);
-                    ic.getEditText().setText(uic);
-                    dob.getEditText().setText(udob);
-                    age.getEditText().setText(uage);
 
-                    occupation.getEditText().setText(uoccupation);
-                    housenum.getEditText().setText(uhomephone);
-                    phonenum.getEditText().setText(uhandphone);
-                    fax.getEditText().setText(ufax);
-                    address.getEditText().setText(ucaddress);
-                    postcode.getEditText().setText(ucpost);
-                    state.getEditText().setText(ucstate);
-                    blooooood.getEditText().setText(ublood);
-                    orgg.getEditText().setText(uhos);
-                    user1.setText(usertype);
+                name.setText(value.getString("uname"));
+                email.setText(value.getString("uemail"));
+                ic.getEditText().setText(value.getString("uic"));
+                dob.getEditText().setText(value.getString("udob"));
+                age.getEditText().setText(value.getString("uage"));
+                occupation.getEditText().setText(value.getString("uoccupation"));
+                housenum.getEditText().setText(value.getString("uhomephone"));
+                phonenum.getEditText().setText(value.getString("uhandphone"));
+                fax.getEditText().setText(value.getString("ufax"));
+                address.getEditText().setText(value.getString("ucaddress"));
+                postcode.getEditText().setText(value.getString("ucpost"));
+                state.getEditText().setText(value.getString("ucstate"));
+                blooooood.getEditText().setText(value.getString("ublood"));
+                orgg.getEditText().setText(value.getString("uhos"));
+                user1.setText(value.getString("usertype"));
 
-                    if(ugender.equals("Male")){
-                        radioButtonUpdateGender = v.findViewById(R.id.radio_male1);
-                    }else {
-                        radioButtonUpdateGender = v.findViewById(R.id.radio_female1);
-                    }
-                    radioButtonUpdateGender.setChecked(true);
-
-                    if(urace.equals("Malay")){
-                        radioButtonUpdateEthnicity = v.findViewById(R.id.radio_malay1);
-                    }else if(urace.equals("Chinese")){
-                        radioButtonUpdateEthnicity = v.findViewById(R.id.radio_chinese1);
-                    }else if(urace.equals("Indian")){
-                        radioButtonUpdateEthnicity = v.findViewById(R.id.radio_indian1);
-                    }else {
-                        radioButtonUpdateEthnicity = v.findViewById(R.id.radio_others1);
-                    }
-                    radioButtonUpdateEthnicity.setChecked(true);
-
-                    if(umarriage.equals("Single")){
-                        radioButtonUpdateMarriage = v.findViewById(R.id.radio_single1);
-                    }else if(umarriage.equals("Married")){
-                        radioButtonUpdateMarriage = v.findViewById(R.id.radio_married1);
-                    }else{
-                        radioButtonUpdateMarriage = v.findViewById(R.id.radio_divorceorwidow1);
-                    }
-                    radioButtonUpdateMarriage.setChecked(true);
+                gen.setText(value.getString("ugender"));
+                rac.setText(value.getString("urace"));
+                sta.setText(value.getString("umarriage"));
 
 
+                String gen1 = gen.getText().toString();
+                String rac1 = rac.getText().toString();
+                String sta1 = sta.getText().toString();
+
+
+                if(gen1.contains("Male")){
+                    radioButtonUpdateGender = v.findViewById(R.id.radio_male1);
+                }else {
+                    radioButtonUpdateGender = v.findViewById(R.id.radio_female1);
                 }
-            }
+                radioButtonUpdateGender.setChecked(true);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+
+                if(rac1.contains("Malay")){
+                    radioButtonUpdateEthnicity = v.findViewById(R.id.radio_malay1);
+                }else if(rac1.contains("Chinese")){
+                    radioButtonUpdateEthnicity = v.findViewById(R.id.radio_chinese1);
+                }else if(rac1.contains("Indian")){
+                    radioButtonUpdateEthnicity = v.findViewById(R.id.radio_indian1);
+                }else {
+                    radioButtonUpdateEthnicity = v.findViewById(R.id.radio_others1);
+                }
+                radioButtonUpdateEthnicity.setChecked(true);
+
+                if(sta1.contains("Single")){
+                    radioButtonUpdateMarriage = v.findViewById(R.id.radio_single1);
+                }else if(sta1.contains("Married")){
+                    radioButtonUpdateMarriage = v.findViewById(R.id.radio_married1);
+                }else{
+                    radioButtonUpdateMarriage = v.findViewById(R.id.radio_divorceorwidow1);
+                }
+                radioButtonUpdateMarriage.setChecked(true);
+
 
             }
         });
+
+
 
     }
 

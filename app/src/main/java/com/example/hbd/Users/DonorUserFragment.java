@@ -1,6 +1,7 @@
 package com.example.hbd.Users;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +13,31 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hbd.Adapter.DonorUserAdapter;
+import com.example.hbd.Model.AppointmentModel;
 import com.example.hbd.Model.TestModel;
 import com.example.hbd.Model.UserModel;
 import com.example.hbd.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DonorUserFragment extends Fragment {
 
@@ -35,6 +48,11 @@ public class DonorUserFragment extends Fragment {
     List<UserModel> userModelList;
     List<TestModel> testModelList;
     DatabaseReference databaseReference;
+    FirebaseFirestore firebaseFirestore;
+    FirebaseUser firebaseUser;
+    FirebaseAuth fAuth;
+    DatabaseReference databaseReference2;
+    String userID, uhos;
     View v;
 
 
@@ -54,34 +72,51 @@ public class DonorUserFragment extends Fragment {
         donorUserAdapter = new DonorUserAdapter(DonorUserFragment.this,userModelList);
 
         recyclerView.setAdapter(donorUserAdapter);
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = firebaseUser.getUid();
+        EventLis();
 
-        // Select usertype equals to donor
-        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("usertype").equalTo("Donor");
+        return v;
+    }
 
-        // display user details
-        query.addChildEventListener(new ChildEventListener() {
+    private void EventLis() {
+
+
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference2.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 UserModel userModel = snapshot.getValue(UserModel.class);
-                userModelList.add(userModel);
-                donorUserAdapter.notifyDataSetChanged();
-            }
+                if(userModel != null){
+                    uhos = userModel.getUhos();
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    firebaseFirestore.collection("User")
+                            .whereEqualTo("usertype", "Donor")
+                            .whereEqualTo("uhos", uhos)
+                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-            }
+                                    if(error != null){
+                                        Log.e("Error", error.getMessage());
+                                    }
+                                    for (DocumentChange documentChange : value.getDocumentChanges()){
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                                        if(documentChange.getType() == DocumentChange.Type.ADDED){
+                                            userModelList.add(documentChange.getDocument().toObject(UserModel.class));
+                                        }
+                                        donorUserAdapter.notifyDataSetChanged();
 
-            }
+                                    }
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
+                                }
+                            });
+                }
             }
 
             @Override
@@ -92,12 +127,16 @@ public class DonorUserFragment extends Fragment {
 
 
 
-        return v;
+
+
+
+
+
+
+
+
+
     }
-
-
-
-
 
 
 }

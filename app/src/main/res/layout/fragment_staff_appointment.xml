@@ -1,14 +1,400 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/appointmentbg"
     tools:context=".Appointment.StaffAppointmentFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/title_app"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="31dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Appointment"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/selectbtn"
+        android:layout_below="@+id/title_app"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <ImageButton
+            android:id="@+id/addappoint1Btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/makeapp"
+            android:background="@drawable/newsbg"
+            android:scaleType="fitXY"
+            android:layout_margin="5dp"
+
+            />
+
+        <ImageButton
+            android:id="@+id/tracklocation1Btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/location"
+            android:background="@drawable/newsbg"
+            android:scaleType="fitXY"
+            android:layout_margin="5dp"
+            />
+        <ImageButton
+            android:id="@+id/viewhistory1Btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/history"
+            android:scaleType="fitXY"
+            android:background="@drawable/newsbg"
+            android:layout_margin="5dp"
+            />
+
+        <ImageButton
+            android:id="@+id/appointmentslotsBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/slots"
+            android:background="@drawable/newsbg"
+            android:scaleType="fitXY"
+            android:layout_margin="5dp"
+
+            />
+
+        <ImageButton
+            android:id="@+id/viewdonorappointmentsBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/apps"
+            android:background="@drawable/newsbg"
+            android:scaleType="fitXY"
+            android:layout_margin="5dp"
+            />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/selectbtn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectbtn"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/title_addappointment"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="316dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="Add \n\n Appointment"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/title_location"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="81dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="233dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="Track \n\n Location"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/title_viewhistory"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="154dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="View \n\n History"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/title_slots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="241dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="74dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="Slots"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/title_viewappointments"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="View \n\n Appointments"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/selectbtn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectbtn2"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/logtab"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_app1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/logtab"
+            android:fontFamily="@font/aclonica"
+            android:text="Upcoming Appointment"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="5dp"
+        android:id="@+id/cardupcomingapp1"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/selectbtn1"
+        app:cardBackgroundColor="@color/white">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/hosstatus1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Pending...."
+                android:textSize="20dp"
+                android:textColor="#ff0000"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:gravity="right" />
+
+            <TextView
+                android:id="@+id/hosdateapp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Date"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/dateicon"
+                android:gravity="left" />
+
+            <TextView
+                android:id="@+id/hostimeapp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Time"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/timeicon"
+                android:gravity="left" />
+
+            <TextView
+                android:id="@+id/hoslocation1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Place"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/orgicon"
+                android:gravity="left" />
+
+            <TextView
+                android:id="@+id/hoscity1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/adamina"
+                android:gravity="right"
+                android:text=""
+                android:textColor="#ff0000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/hosslotid1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/adamina"
+                android:gravity="right"
+                android:text=""
+                android:visibility="invisible"
+                android:textColor="#ff0000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/hosbalslot1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/adamina"
+                android:gravity="right"
+                android:text=""
+                android:visibility="invisible"
+                android:textColor="#ff0000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hosappid1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/adamina"
+                android:gravity="right"
+                android:text=""
+                android:visibility="invisible"
+                android:textColor="#ff0000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="20dp"
+            android:background="@color/white">
+
+            <Button
+                android:id="@+id/appupdateBtn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonbg"
+                android:layout_marginStart="20dp"
+                android:text="Change"/>
+            <Button
+                android:id="@+id/appdeletebtn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonbg"
+                android:layout_marginStart="70dp"
+                android:text="Delete"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/hosnoappointmenttitle12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectbtn1"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/annie_use_your_telescope"
+        android:gravity="center"
+        android:text="Currently there's no appointment"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

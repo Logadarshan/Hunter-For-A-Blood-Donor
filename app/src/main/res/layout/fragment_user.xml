@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newsbg"
+    android:background="#F9C1B1"
     tools:context=".Users.UserFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -44,9 +44,10 @@
         android:layout_height="55dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="27dp"
+        android:layout_marginStart="20dp"
         android:fontFamily="@font/aclonica"
         android:text="User List"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="30sp" />
 

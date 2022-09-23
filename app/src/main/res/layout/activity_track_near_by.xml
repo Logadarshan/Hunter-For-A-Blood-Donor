@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TrackNearByActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/maplayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/newsbg">
+
+
+        <ImageButton
+            android:id="@+id/localhos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/newsbg"
+            android:src="@drawable/localhospitalicon"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:padding="4dp"
+            android:text="Click the icon to display blood banks"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/adamina"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/maplayout"
+   />
+
+
+</RelativeLayout>

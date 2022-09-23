@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newsbg"
+    tools:context=".Slot.AddSlotFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+
+        <ImageButton
+            android:id="@+id/backBtn1"
+            android:layout_width="60dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/backimg"
+            android:layout_gravity="right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/title_newsfeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/averia_gruesa_libre"
+            android:text="Add Appointment Slot"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+
+
+        <TextView
+            android:id="@+id/textdate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ic"
+            android:text="Date "
+            android:textColor="@color/black"
+            android:padding="6dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="50dp"/>
+
+        <EditText
+            android:id="@+id/slotdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textdate"
+            android:hint="Enter appointment date (mm/dd/yyyy)"
+            android:textColorHint="@color/black"
+            android:inputType="date"
+            android:textSize="16sp"
+            android:focusable="false"
+            android:textColor="@color/black"
+            android:padding="16dp"
+            android:background="@drawable/edittextbg"
+            android:drawableLeft="@drawable/calendaricon"
+            android:drawablePadding="10dp" />
+
+        <TextView
+            android:id="@+id/texttime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ic"
+            android:text="Time"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:padding="6dp"
+            android:textSize="16dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/slottime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/texttime"
+            android:hint="Enter appointment time (HHmm)"
+            android:textColorHint="@color/black"
+            android:inputType="date"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:padding="16dp"
+            android:focusable="false"
+            android:background="@drawable/edittextbg"
+            android:drawableLeft="@drawable/timeicon"
+            android:drawablePadding="10dp" />
+
+        <TextView
+            android:id="@+id/textcap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ic"
+            android:text="Capacity"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:padding="6dp"
+            android:textSize="16dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/slotcapacity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/texttime"
+            android:hint="Enter appointment capacity"
+            android:textColorHint="@color/black"
+            android:inputType="date"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:padding="16dp"
+            android:background="@drawable/edittextbg"
+            android:drawableLeft="@drawable/capicon"
+            android:drawablePadding="10dp" />
+
+        <EditText
+            android:id="@+id/slottime1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/texttime"
+            android:hint="Enter appointment capacity"
+            android:inputType="date"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:padding="6dp"
+            android:visibility="invisible"
+            android:background="@color/white"
+            android:drawablePadding="10dp" />
+
+
+        <Button
+            android:id="@+id/addslot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_margin="50dp"
+            android:background="@drawable/buttonbg"
+            android:text="Save"/>
+
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

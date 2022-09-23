@@ -23,6 +23,8 @@ public class UserModel {
      String ublood;
      String uhos;
      String userprofimage;
+     String userid;
+     String ostate;
 
 
     public UserModel() {
@@ -31,7 +33,7 @@ public class UserModel {
     public UserModel(String uname, String uic, String udob, String uage, String ugender, String urace,
                      String umarriage, String uoccupation, String uemail, String upassword, String urepassword,
                      String uhomephone, String uhandphone, String ufax, String ucaddress, String ucpost, String ucstate,
-                     String usertype, String ublood, String uhos, String userprofimage) {
+                     String usertype, String ublood, String uhos, String userprofimage, String userid, String ostate) {
         this.uname = uname;
         this.uic = uic;
         this.udob = udob;
@@ -53,6 +55,8 @@ public class UserModel {
         this.ublood = ublood;
         this.uhos = uhos;
         this.userprofimage =userprofimage;
+        this.userid = userid;
+        this.ostate = ostate;
     }
 
 
@@ -222,5 +226,21 @@ public class UserModel {
 
     public void setUserprofimage(String userprofimage) {
         this.userprofimage = userprofimage;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getOstate() {
+        return ostate;
+    }
+
+    public void setOstate(String ostate) {
+        this.ostate = ostate;
     }
 }

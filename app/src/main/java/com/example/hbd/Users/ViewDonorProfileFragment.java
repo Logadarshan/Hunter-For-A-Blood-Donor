@@ -1,21 +1,31 @@
 package com.example.hbd.Users;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hbd.R;
+import com.squareup.picasso.Picasso;
 
 
 public class ViewDonorProfileFragment extends Fragment {
 
-
+    ImageView img;
+    private static final int Gallery_Code=1;
+    Uri imageUrl=null;
     String Uname;
     String Ublood;
     String Uage;
@@ -25,13 +35,14 @@ public class ViewDonorProfileFragment extends Fragment {
     String Uaddress;
     String Uhos;
     String Uoccupation;
+    String userprofimage;
 
     public ViewDonorProfileFragment() {
 
     }
 
     public ViewDonorProfileFragment(String Uname, String Ublood, String Uage ,String Ugender,String Uhandphone ,String Uemail,
-                                   String Uaddress ,String Uhos, String Uoccupation) {
+                                   String Uaddress ,String Uhos, String Uoccupation, String userprofimage) {
 
         this.Uname = Uname;
         this.Ublood = Ublood;
@@ -42,6 +53,7 @@ public class ViewDonorProfileFragment extends Fragment {
         this.Uaddress = Uaddress;
         this.Uhos = Uhos;
         this.Uoccupation = Uoccupation;
+        this.userprofimage = userprofimage;
     }
 
 
@@ -61,6 +73,7 @@ public class ViewDonorProfileFragment extends Fragment {
         TextView dadduser = v.findViewById(R.id.donorusersadd);
         TextView dhosuser = v.findViewById(R.id.donorusershos);
         TextView doccupationuser = v.findViewById(R.id.donorusersoccupation);
+         img = v.findViewById(R.id.staffviewdonorprofileimg);
 
 
         Button back2 = v.findViewById(R.id.backdonorBtn);
@@ -74,6 +87,8 @@ public class ViewDonorProfileFragment extends Fragment {
         dadduser.setText(Uaddress);
         dhosuser.setText(Uhos);
         doccupationuser.setText(Uoccupation);
+
+        Picasso.get().load(userprofimage).into(img);
 
 
         // Navigate user interface
@@ -90,4 +105,20 @@ public class ViewDonorProfileFragment extends Fragment {
         });
         return v;
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == Gallery_Code && resultCode == RESULT_OK)
+        {
+            imageUrl = data.getData();
+            img.setImageURI(imageUrl);
+        }
+
+
+    }
+
+
+
 }

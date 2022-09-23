@@ -27,16 +27,24 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.jsibbold.zoomage.ZoomageView;
 import com.squareup.picasso.Picasso;
 
 public class DonorProfileFragment extends Fragment {
 
     TextView ic,age,dob,gender,race,mstatus,occupation,phonenum,housenum,fax,
             address,postcode,state,password,repassword,blooooood,orgg;
-    TextView name, email,user;
-    ImageView editprofile, dimage;
+    TextView name, email,user,imagcap;
+    ImageView editprofile;
+    ZoomageView dimage;
     Activity context;
     FirebaseUser firebaseUser;
+    FirebaseFirestore firebaseFirestore;
     DatabaseReference databaseReference;
     FirebaseAuth fAuth;
     private static final int Gallery_Code=1;
@@ -77,6 +85,9 @@ public class DonorProfileFragment extends Fragment {
         editprofile = v.findViewById(R.id.profileeditBtn);
         dimage = v.findViewById(R.id.dprofileimg);
 
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
         // Navigate to Update Profile Interface
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +100,7 @@ public class DonorProfileFragment extends Fragment {
 
         // authenticate user
        fAuth = FirebaseAuth.getInstance();
+
        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         Uri uri = firebaseUser.getPhotoUrl();
 
@@ -96,6 +108,9 @@ public class DonorProfileFragment extends Fragment {
         Picasso.get().load(uri).into(dimage);
 
         showUserProfile(firebaseUser);
+
+
+
 
 
 
@@ -122,62 +137,38 @@ public class DonorProfileFragment extends Fragment {
 
         String userID = firebaseUser.getUid();
 
-        // display user profile details
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+
+        DocumentReference documentReference = firebaseFirestore.collection("User").document(userID);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                UserModel userModel = snapshot.getValue(UserModel.class);
-                if(userModel != null){
-
-                    uemail = userModel.getUemail();
-                    uname = userModel.getUname();
-                    usertype = userModel.getUsertype();
-                    uic = userModel.getUic();
-                    udob = userModel.getUdob();
-                    uage = userModel.getUage();
-                    ugender = userModel.getUgender();
-                    urace = userModel.getUrace();
-                    umarriage = userModel.getUmarriage();
-                    uoccupation = userModel.getUoccupation();
-                    uhandphone = userModel.getUhandphone();
-                    uhomephone = userModel.getUhomephone();
-                    ufax = userModel.getUfax();
-                    ucaddress = userModel.getUcaddress();
-                    ucpost = userModel.getUcpost();
-                    ucstate = userModel.getUcstate();
-                    ublood = userModel.getUblood();
-                    uhos = userModel.getUhos();
-
-                    name.setText(uname);
-                    email.setText(uemail);
-                    ic.setText(uic);
-                    dob.setText(udob);
-                    age.setText(uage);
-                    gender.setText(ugender);
-                    race.setText(urace);
-                    mstatus.setText(umarriage);
-                    occupation.setText(uoccupation);
-                    housenum.setText(uhomephone);
-                    phonenum.setText(uhandphone);
-                    fax.setText(ufax);
-                    address.setText(ucaddress);
-                    postcode.setText(ucpost);
-                    state.setText(ucstate);
-                    blooooood.setText(ublood);
-                    orgg.setText(uhos);
-                    user.setText(usertype);
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
 
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
+
+
+                name.setText(value.getString("uname"));
+                email.setText(value.getString("uemail"));
+                ic.setText(value.getString("uic"));
+                dob.setText(value.getString("udob"));
+                age.setText(value.getString("uage"));
+                gender.setText(value.getString("ugender"));
+                race.setText(value.getString("urace"));
+                mstatus.setText(value.getString("umarriage"));
+                occupation.setText(value.getString("uoccupation"));
+                housenum.setText(value.getString("uhomephone"));
+                phonenum.setText(value.getString("uhandphone"));
+                fax.setText(value.getString("ufax"));
+                address.setText(value.getString("ucaddress"));
+                postcode.setText(value.getString("ucpost"));
+                state.setText(value.getString("ucstate"));
+                blooooood.setText(value.getString("ublood"));
+                orgg.setText(value.getString("uhos"));
+                user.setText(value.getString("usertype"));
             }
         });
+
 
     }
 

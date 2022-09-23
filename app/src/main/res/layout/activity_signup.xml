@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         android:src="@drawable/log"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textname"
                 android:hint="Enter your name"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -95,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textic"
                 android:hint="Enter your identification number"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -121,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textdob"
                 android:hint="Enter your date of birth (dd/m/yyyy)"
+                android:textColorHint="@color/black"
                 android:inputType="date"
                 android:focusable="false"
                 android:textSize="16sp"
@@ -146,14 +149,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textage"
-                android:hint="Enter your age"
-                android:inputType="text"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:padding="6dp"
                 android:background="@color/white"
                 android:drawableLeft="@drawable/ageicon"
-                android:drawablePadding="10dp" />
+                android:drawablePadding="10dp"
+                android:editable="false"
+                android:hint="Age"
+                android:inputType="text"
+                android:padding="6dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textgender"
@@ -276,8 +281,8 @@
                 <RadioButton
                     android:id="@+id/radio_divorceorwidow"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Divorced/Widowed"
+                    android:layout_height="100dp"
+                    android:text="Divorce\n /Widowed"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_marginLeft="3dp"/>
@@ -296,7 +301,7 @@
                 android:textColor="@color/black"
                 android:padding="6dp"
                 android:textSize="16dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="20dp"/>
 
             <EditText
                 android:id="@+id/occupation"
@@ -304,6 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textoccupation"
                 android:hint="Enter your occupation"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -328,7 +334,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textemail"
-                android:hint="Enter your email"
+                android:hint="Enter your email\n (make sure no spaces at end)"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -354,7 +361,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textpassword"
                 android:hint="Enter your password"
-                android:inputType="textPassword"
+                android:textColorHint="@color/black"
+                android:inputType="textVisiblePassword"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:padding="6dp"
@@ -379,7 +387,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textrepassword"
                 android:hint="Confirm your password"
-                android:inputType="textPassword"
+                android:textColorHint="@color/black"
+                android:inputType="textVisiblePassword"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:padding="6dp"
@@ -404,6 +413,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/texthomephone"
                 android:hint="Enter your homephone number"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -429,6 +439,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/texthandphone"
                 android:hint="Enter your phone number"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -454,6 +465,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textofficephone"
                 android:hint="Enter your office number"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -479,6 +491,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textfax"
                 android:hint="Enter your fax number"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -504,6 +517,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textaddress"
                 android:hint="Enter your address"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -523,25 +537,24 @@
                 android:textSize="16dp"
                 android:layout_marginTop="10dp"/>
 
-            <EditText
-                android:id="@+id/cstate"
+
+            <Spinner
+                android:id="@+id/statespinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textstate"
-                android:hint="Enter your state"
-                android:inputType="text"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:padding="6dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="20dp"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/stateicon"
-                android:drawablePadding="10dp" />
+                android:layout_below="@+id/textstate"
+                android:entries="@array/state">
+            </Spinner>
+
 
             <TextView
                 android:id="@+id/textpost"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/cstate"
+                android:layout_below="@+id/statespinner"
                 android:text="Postcode"
                 android:textColor="@color/black"
                 android:padding="6dp"
@@ -554,6 +567,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textpost"
                 android:hint="Enter your postcode"
+                android:textColorHint="@color/black"
                 android:inputType="text"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -575,46 +589,40 @@
                 android:textSize="16dp"
                 android:layout_marginTop="10dp"/>
 
-            <EditText
-                android:id="@+id/bloodgroup"
+            <Spinner
+                android:id="@+id/bloodspinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textblood"
-                android:hint="Enter your Blood Group"
-                android:inputType="text"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:padding="6dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="20dp"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/bloodicon"
-                android:drawablePadding="10dp" />
+                android:layout_below="@+id/textblood"
+                android:entries="@array/blood">
+            </Spinner>
+
 
             <TextView
                 android:id="@+id/texthos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/bloodgroup"
-                android:text="Hospital"
+                android:layout_below="@+id/bloodspinner"
+                android:text="Nearest Blood Bank"
                 android:textColor="@color/black"
                 android:padding="6dp"
                 android:textSize="16dp"
                 android:layout_marginTop="10dp"/>
 
-            <EditText
-                android:id="@+id/hosorg"
+
+            <Spinner
+                android:id="@+id/hosspinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/texthos"
-                android:hint="Enter your Hospital"
-                android:inputType="text"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:padding="6dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="20dp"
                 android:background="@color/white"
-                android:drawableLeft="@drawable/orgicon"
-                android:drawablePadding="10dp" />
-
-
+                android:layout_below="@+id/texthos"
+                android:entries="@array/hospital">
+            </Spinner>
 
 
 
@@ -622,7 +630,7 @@
                 android:id="@+id/signupBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/hosorg"
+                android:layout_below="@+id/hosspinner"
                 android:layout_marginTop="50dp"
                 android:text="Submit"
                 android:background="@drawable/buttonbg"/>

@@ -19,7 +19,7 @@ public class StaffHome extends AppCompatActivity {
 
     NewsfeedFragment newsFeedFragment = new NewsfeedFragment();
     DonorProfileFragment donorProfileFragment = new DonorProfileFragment();
-    StaffAppointmentFragment staffAppointmentFragment = new StaffAppointmentFragment();
+    StaffAppointmentFragment staffAppointmentFragment1 = new StaffAppointmentFragment();
     DonorUserFragment donorUserFragment = new DonorUserFragment();
 
 
@@ -45,7 +45,7 @@ public class StaffHome extends AppCompatActivity {
                         return true;
                     case R.id.Appointment1:
                         // Appointment Page for Staff
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,staffAppointmentFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,staffAppointmentFragment1).commit();
                         return true;
                     case R.id.NewsFeed1:
                         // News Feed Page for Staff

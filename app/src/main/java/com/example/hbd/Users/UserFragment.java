@@ -1,9 +1,14 @@
 package com.example.hbd.Users;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hbd.Adapter.UserAdapter;
 import com.example.hbd.Model.UserModel;
 import com.example.hbd.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +31,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
@@ -34,16 +47,18 @@ public class UserFragment extends Fragment {
 
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
-    FirebaseAuth fAuth;
-    FirebaseUser firebaseUser;
-    UserModel userModel;
 
     RecyclerView recyclerView;
     FloatingActionButton floatingActionButton2;
     UserAdapter userAdapter;
     List<UserModel> userModelList;
-    DatabaseReference databaseReference;
-    CollectionReference citiesRef;
+
+    FirebaseFirestore firebaseFirestore;
+    FirebaseUser firebaseUser1;
+    FirebaseAuth fAuth1;
+    DatabaseReference databaseReference2;
+    String userID, uhos2;
+
 
     View v;
 
@@ -74,35 +89,61 @@ public class UserFragment extends Fragment {
 
         recyclerView.setAdapter(userAdapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        fAuth1 = FirebaseAuth.getInstance();
+        firebaseUser1 = FirebaseAuth.getInstance().getCurrentUser();
 
-        // Select usertype equals to Staff
-        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("usertype").equalTo("Staff");
+        userID = firebaseUser1.getUid();
+        EventLis();
 
-       // Display Staff details
-        query.addChildEventListener(new ChildEventListener() {
+        return v;
+    }
+
+    private void EventLis() {
+
+
+
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference2.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 UserModel userModel = snapshot.getValue(UserModel.class);
-                userModelList.add(userModel);
-                userAdapter.notifyDataSetChanged();
+                if(userModel != null){
+                    uhos2 = userModel.getUhos();
 
-            }
+                    firebaseFirestore.collection("User")
+                            .whereNotEqualTo("usertype", "Donor")
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    firebaseFirestore.collection("User")
+                                            .whereEqualTo("uhos", uhos2)
+                                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                                    if(error != null){
+                                                        Log.e("Error", error.getMessage());
+                                                    }
+                                                    for (DocumentChange documentChange : value.getDocumentChanges()){
 
-            }
+                                                        if(documentChange.getType() == DocumentChange.Type.ADDED){
+                                                            userModelList.add(documentChange.getDocument().toObject(UserModel.class));
+                                                        }
+                                                        userAdapter.notifyDataSetChanged();
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                                                    }
 
-            }
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                                }
+                                            });
+                                }
+                            });
 
+
+                }
             }
 
             @Override
@@ -113,17 +154,5 @@ public class UserFragment extends Fragment {
 
 
 
-
-
-
-        return v;
     }
-
-
-
-
-
-
-
-
 }

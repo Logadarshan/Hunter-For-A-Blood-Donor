@@ -1,14 +1,21 @@
 package com.example.hbd;
 
+import static com.example.hbd.Selftest.TestQuestionFragment.TAG;
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,19 +24,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.hbd.Home.DonorHome;
 import com.example.hbd.Model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Signup extends AppCompatActivity {
+public class Signup extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
 
 
     EditText name,ic,dob,age,occupation, memail,mpassword,
@@ -38,30 +55,115 @@ public class Signup extends AppCompatActivity {
     RadioButton radioButtonGender, radioButtonEthnicity, radioButtonMarriage;
     Button signupBtn;
 
+    String uname, uic,udob, uage, uoccupation, urepassword, uhomephone, uhandphone,ufax, ucaddress,ucpost;
+    String ucstate, uemail, upassword, ublood, uhos, ugender, urace, umarriage, usertype, userimages, ostate,userid;
+    String uid;
+
 
     FirebaseDatabase firebaseDatabase;
+    FirebaseFirestore firebaseFirestore;
     FirebaseUser firebaseUser;
     FirebaseAuth fAuth;
     DatabaseReference databaseReference;
     FirebaseFirestore fStore;
     DatePickerDialog datePicker;
+    Spinner hosspinner,statespinner,bloodspinner;
+
+    // validate email
+    private Boolean validateEmail(){
+        String demail = memail.getText().toString();
+
+        if(demail.isEmpty()){
+            memail.setError("Email field cannot be empty");
+            return false;
+        }
+        else {
+            memail.setError(null);
+            return true;
+        }
+    }
+
+    // validate password
+    private Boolean validatePassword(){
+        String dpassword = mpassword.getText().toString();
+        String drpassword = repassword.getText().toString();
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_])(?=\\S+$).{4,}$";
+
+        Pattern pattern= Pattern.compile(PASSWORD_PATTERN);
 
 
-    private static final Pattern PASSWORD_PATTERN =
-            Pattern.compile( "^" +
-                    "(?= * [0-9])" +   // atleast 1 digit
-                    "(?= * [A-Z])" +    // atleast 1 lowercase letter
-                    "(?= * [a-z])" +    // atleast 1 uppercase letter
-                    "(?= * [@#$%^&+=])" + // atleast 1 special character
-                    "(?=\\S+$)" +          // no white spaces
-                    ".{6,}" +             // at least 6 characters
-                    "$"
-            );
+        if(dpassword.isEmpty()){
+            mpassword.setError("Password field cannot be empty");
+            return false;
+        }else if (!pattern.matcher(dpassword).matches()){
+            mpassword.setError("Password not valid.Password should consists capital,small letters, number and special characters");
+            return false;
+        }
+        else if(drpassword.isEmpty()){
+            repassword.setError("Password field cannot be empty");
+            return false;
+        } else if(!dpassword.matches(drpassword)){
+            repassword.setError("Passwords not matching");
+            return false;
+        }
+        else {
+            mpassword.setError(null);
+            return true;
+        }
+    }
 
-    private static final Pattern EMAIL_PATTERN =
-            Pattern.compile(
-                    "^[A-Za-z0-9+_.-]+@(.+)$"
-            );
+
+    // validate data
+    private boolean validdatas() {
+        String dname = name.getText().toString();
+        String dic = ic.getText().toString();
+        String doccupation = occupation.getText().toString();
+        String dhomephone = homephone.getText().toString();
+        String dhandphone = handphone.getText().toString();
+        String dofficephone = officephone.getText().toString();
+        String dfax = fax.getText().toString();
+        String dcaddress = caddress.getText().toString();
+        String dcpost = cpost.getText().toString();
+
+        if(dname.isEmpty()  | dic.isEmpty() |
+                doccupation.isEmpty() |  dhomephone.isEmpty() | dhandphone.isEmpty() | dofficephone.isEmpty() |
+                dfax.isEmpty() | dcaddress.isEmpty() | dcpost.isEmpty()  ){
+            name.setError("Fields cannot be empty");
+            ic.setError("Fields cannot be empty");
+            occupation.setError("Fields cannot be empty");
+            homephone.setError("Fields cannot be empty");
+            handphone.setError("Fields cannot be empty");
+            officephone.setError("Fields cannot be empty");
+            fax.setError("Fields cannot be empty");
+            caddress.setError("Fields cannot be empty");
+            cpost.setError("Fields cannot be empty");
+
+            return false;
+
+        }
+        else {
+            name.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validage(){
+
+
+        String dage = age.getText().toString();
+        Integer age1 = Integer.parseInt(dage);
+
+        if (Integer.valueOf(dage) < 18){
+            Toast.makeText(Signup.this, "Sorry You should 18 and above to register this account", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            age.setError(null);
+            return true;
+        }
+
+
+    }
 
 
     @Override
@@ -90,15 +192,51 @@ public class Signup extends AppCompatActivity {
         officephone = findViewById(R.id.officephone);
         fax = findViewById(R.id.fax);
         caddress = findViewById(R.id.caddress);
-        cstate = findViewById(R.id.cstate);
-        cpost = findViewById(R.id.cpost);
-        bloood = findViewById(R.id.bloodgroup);
-        organization = findViewById(R.id.hosorg);
 
+        cpost = findViewById(R.id.cpost);
+
+        organization = findViewById(R.id.hosorg);
+        hosspinner = findViewById(R.id.hosspinner);
+        statespinner = findViewById(R.id.statespinner);
+        bloodspinner = findViewById(R.id.bloodspinner);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.hospital,
+                R.layout.color_spinner_layout
+        );
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
+        hosspinner.setAdapter(adapter);
+        hosspinner.setOnItemSelectedListener(this);
+
+
+        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(
+                this,
+                R.array.state,
+                R.layout.color_spinner_layout
+        );
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
+        statespinner.setAdapter(adapter1);
+        statespinner.setOnItemSelectedListener(this);
+
+
+        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
+                this,
+                R.array.blood,
+                R.layout.color_spinner_layout
+        );
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
+        bloodspinner.setAdapter(adapter2);
+        bloodspinner.setOnItemSelectedListener(this);
+
+
+
+        age.setEnabled(false);
 
         signupBtn = findViewById(R.id.signupBtn);
 
         fAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
 
@@ -110,7 +248,8 @@ public class Signup extends AppCompatActivity {
         dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String simpleDateFormat2 = new SimpleDateFormat("yyyy", Locale.getDefault()).format(new Date());
+                Integer ageyear = Integer.valueOf(simpleDateFormat2);
                 final Calendar calendar = Calendar.getInstance();
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
                 int month = calendar.get(Calendar.MONTH);
@@ -120,6 +259,10 @@ public class Signup extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         dob.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+
+                        String realage1 = String.valueOf(ageyear-year);
+
+                        age.setText(realage1);
                     }
                 },year,month,day);
                 datePicker.show();
@@ -133,54 +276,25 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                firebaseDatabase = FirebaseDatabase.getInstance();
 
-
-                int selectedGenderId = radioGroupGender.getCheckedRadioButtonId();
-                radioButtonGender = findViewById(selectedGenderId);
-                int selectedEthnicity = radioGroupEthnicity.getCheckedRadioButtonId();
-                radioButtonEthnicity = findViewById(selectedEthnicity);
-                int selectedMarriageId = radioGroupMarriage.getCheckedRadioButtonId();
-                radioButtonMarriage = findViewById(selectedMarriageId);
-
-                String uname = name.getText().toString();
-                String uic = ic.getText().toString();
-
-                String udob = dob.getText().toString();
-                String uage = age.getText().toString();
-                String uoccupation = occupation.getText().toString();
-                String urepassword = repassword.getText().toString();
-                String uhomephone = homephone.getText().toString();
-                String uhandphone = handphone.getText().toString();
-                String ufax = fax.getText().toString();
-                String ucaddress = caddress.getText().toString();
-                String ucpost = cpost.getText().toString();
-                String ucstate = cstate.getText().toString();
-                String uemail = memail.getText().toString();
-                String upassword = mpassword.getText().toString();
-                String ublood = bloood.getText().toString();
-                String uhos = organization.getText().toString();
-                String ugender = radioButtonGender.getText().toString();
-                String urace = radioButtonEthnicity.getText().toString();
-                String umarriage = radioButtonMarriage.getText().toString();
-
-                String usertype = "Donor";
-                String userimages = "/";
-
-
-
-                userregister(uname,uic,udob,uage,ugender,urace,umarriage,uoccupation,uemail,upassword,urepassword,
-                        uhomephone,uhandphone,ufax,ucaddress,ucpost,ucstate,usertype,ublood,uhos,userimages);
-
-               /* if( ! validatedata()){
+                if(!validdatas()){
+                    return;
+                }
+                if(!validage()){
+                    return;
+                }
+                if(!validateEmail()){
                     return;
 
                 }
-                else{
+                if(!validatePassword()){
+                    return;
+                }
+
+                checkEmail();
 
 
-
-                } */
+                donorregister();
 
 
             }
@@ -189,133 +303,144 @@ public class Signup extends AppCompatActivity {
 
     }
 
-    // pass donor details
-    private void userregister(String uname, String uic, String udob, String uage, String ugender, String urace,
-                              String umarriage, String uoccupation, String uemail, String upassword, String urepassword,
-                              String uhomephone, String uhandphone, String ufax, String ucaddress, String ucpost, String ucstate,
-                              String usertype, String ublood, String uhos,String userimages) {
+    private void donorregister() {
+
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+        int selectedGenderId = radioGroupGender.getCheckedRadioButtonId();
+        radioButtonGender = findViewById(selectedGenderId);
+        int selectedEthnicity = radioGroupEthnicity.getCheckedRadioButtonId();
+        radioButtonEthnicity = findViewById(selectedEthnicity);
+        int selectedMarriageId = radioGroupMarriage.getCheckedRadioButtonId();
+        radioButtonMarriage = findViewById(selectedMarriageId);
+
+        uname = name.getText().toString();
+        uic = ic.getText().toString();
+
+        udob = dob.getText().toString();
+        uage = age.getText().toString();
+        uoccupation = occupation.getText().toString();
+        urepassword = repassword.getText().toString();
+        uhomephone = homephone.getText().toString();
+        uhandphone = handphone.getText().toString();
+        ufax = fax.getText().toString();
+        ucaddress = caddress.getText().toString();
+        ucpost = cpost.getText().toString();
+        uemail = memail.getText().toString();
+        upassword = mpassword.getText().toString();
+        ugender = radioButtonGender.getText().toString();
+        urace = radioButtonEthnicity.getText().toString();
+        umarriage = radioButtonMarriage.getText().toString();
+        uhos = hosspinner.getSelectedItem().toString();
+        ucstate = statespinner.getSelectedItem().toString();
+        ublood = bloodspinner.getSelectedItem().toString();
 
         FirebaseAuth.getInstance();
         fAuth.createUserWithEmailAndPassword(uemail,upassword).addOnCompleteListener(Signup.this,
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        // if task is successful
-                        if(task.isSuccessful()){
-
-                            // insert user details into database
-                            UserModel userModel = new UserModel(uname,uic,udob,uage,ugender,urace,umarriage,uoccupation,uemail,upassword,urepassword,
-                                    uhomephone,uhandphone,ufax,ucaddress,ucpost,ucstate,usertype,ublood,uhos,userimages);
+                        if (task.isSuccessful()){
                             firebaseUser = fAuth.getCurrentUser();
+                            uid = firebaseUser.getUid();
 
-                            databaseReference= FirebaseDatabase.getInstance().getReference("Users");
-                            databaseReference.child(firebaseUser.getUid()).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            Map<String,Object> user = new HashMap<>();
+                            user.put("ostate","-");
+                            user.put("uage",uage);
+                            user.put("ublood",ublood);
+                            user.put("ucaddress",ucaddress);
+                            user.put("ucpost",ucpost);
+                            user.put("ucstate",ucstate);
+                            user.put("udob",udob);
+                            user.put("uemail",uemail);
+                            user.put("ufax",ufax);
+                            user.put("ugender",ugender);
+                            user.put("uhandphone",uhandphone);
+                            user.put("uhomephone",uhomephone);
+                            user.put("uhos",uhos);
+                            user.put("uic",uic);
+                            user.put("umarriage",umarriage);
+                            user.put("uname",uname);
+                            user.put("uoccupation",uoccupation);
+                            user.put("upassword",upassword);
+                            user.put("urace",urace);
+                            user.put("urepassword",urepassword);
+                            user.put("userid",uid);
+                            user.put("userprofimage","-");
+                            user.put("usertype","Donor");
+
+                            DocumentReference documentReference = firebaseFirestore.collection("User").document(uid);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    firebaseUser.sendEmailVerification();
-                                    Toast.makeText(Signup.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                                public void onSuccess(Void unused) {
+                                    Log.d(TAG,"User Profile Created" + uid);
                                     startActivity(new Intent(Signup.this, DonorHome.class));
                                 }
                             });
-                        }
-                        else {
-                            Toast.makeText(Signup.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                            Map<String,Object> map = new HashMap<>();
+                            map.put("resultans" , "-");
+                            map.put("usertestid", uid);
+
+
+
+                            DocumentReference documentReference1 = firebaseFirestore.collection("User").document(uid)
+                                    .collection("Test").document(uid);
+                            documentReference1.set(map);
+
+
+                            databaseReference= FirebaseDatabase.getInstance().getReference("Users");
+                            databaseReference.child(uid).setValue(user);
+
+
+
                         }
                     }
                 });
-    }
 
-    // validate data
-    private boolean validatedata() {
-        String dname = name.getText().toString();
-        String dic = ic.getText().toString();
-        String ddob = dob.getText().toString();
-        String dage = age.getText().toString();
-        String dgender  ;
-        String race ;
-        String dmarriage ;
-        String doccupation = occupation.getText().toString();
-        String dhomephone = homephone.getText().toString();
-        String dhandphone = handphone.getText().toString();
-        String dofficephone = officephone.getText().toString();
-        String dfax = fax.getText().toString();
-        String dcaddress = caddress.getText().toString();
-        String dcpost = cpost.getText().toString();
-        String dcstate = cstate.getText().toString();
 
-        if(dname.isEmpty() | ddob.isEmpty() | dic.isEmpty() | dage.isEmpty() |
-           doccupation.isEmpty() |  dhomephone.isEmpty() | dhandphone.isEmpty() | dofficephone.isEmpty() |
-           dfax.isEmpty() | dcaddress.isEmpty() | dcpost.isEmpty() | dcstate.isEmpty()){
-            name.setError("Fields cannot be empty");
-            ic.setError("Fields cannot be empty");
-            dob.setError("Fields cannot be empty");
-            age.setError("Fields cannot be empty");
-            occupation.setError("Fields cannot be empty");
-            homephone.setError("Fields cannot be empty");
-            handphone.setError("Fields cannot be empty");
-            officephone.setError("Fields cannot be empty");
-            fax.setError("Fields cannot be empty");
-            caddress.setError("Fields cannot be empty");
-            cpost.setError("Fields cannot be empty");
-            cstate.setError("Fields cannot be empty");
 
-            return false;
-
-        }
-        else {
-            name.setError(null);
-            return true;
-        }
-    }
-
-    // valid password
-    private boolean validpassword() {
-
-        String dpassword = mpassword.getText().toString();
-        String drepassword = repassword.getText().toString();
-        String passcriteria = "^" +
-                "(?= * [0-9])" +   // atleast 1 digit
-                "(?= * [A-Z])" +    // atleast 1 lowercase letter
-                "(?= * [a-z])" +    // atleast 1 uppercase letter
-                "(?= * [@#$%^&+=])" + // atleast 1 special character
-                "(?=\\S+$)" +          // no white spaces
-                ".{6,}" +             // at least 6 characters
-                "$" ;
-
-        if(dpassword.isEmpty())
-        {
-            mpassword.setError("Field is empty!");
-            return false;
-        }
-        else if(dpassword.equals(drepassword)){
-            repassword.setError("Passwords not matching");
-            return false;
-        }
-        else if(!dpassword.matches(passcriteria))
-        {
-            mpassword.setError("Password too weak!Password need to contain Capital letter, small letter, numbers and special characters! Password should be no spaces");
-            return false;
-        }
-
-        return false;
-    }
-
-    // valid email
-    private boolean validmail() {
-
-        String demail = memail.getText().toString();
-
-        if(demail.isEmpty())
-        {
-            memail.setError("Field is empty!");
-        }
-        if(!EMAIL_PATTERN.matcher(demail).matches()){
-            memail.setError("Email is not valid");
-        }
-
-        return false;
     }
 
 
+    private void checkEmail(){
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+
+
+        firebaseAuth.fetchSignInMethodsForEmail(memail.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+
+                        if (isNewUser) {
+                            Log.e("TAG", "Is New User!");
+                        } else {
+                            memail.setError("User already exists");
+                            Toast.makeText(Signup.this, "The User already exists", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+
+
+
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

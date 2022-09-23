@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newsbg"
+    android:background="#F9C1B1"
     tools:context=".Users.DonorUserFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -31,7 +31,8 @@
         android:layout_marginTop="27dp"
         android:fontFamily="@font/aclonica"
         android:text="Donor List"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
+        android:layout_marginStart="20dp"
         android:textColor="@color/black"
         android:textSize="30sp" />
 

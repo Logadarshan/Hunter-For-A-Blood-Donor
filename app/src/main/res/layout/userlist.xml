@@ -3,14 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="30dp"
+    android:layout_marginBottom="20dp"
+    android:foreground="?attr/selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/newsbg">
+    android:background="@drawable/donorbg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:background="@drawable/newsbg">
+        android:background="@drawable/donorbg">
 
         <TextView
             android:id="@+id/nametext"
@@ -55,6 +58,26 @@
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <TextView
+            android:id="@+id/usersusertype"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="164dp"
+            android:paddingBottom="0dp"
+            android:text=""
+            android:visibility="invisible"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
 
 
         <de.hdodenhof.circleimageview.CircleImageView

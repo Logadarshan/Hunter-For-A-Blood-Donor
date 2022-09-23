@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.hbd.Model.TestModel;
 import com.example.hbd.Model.UserModel;
 import com.example.hbd.R;
 import com.example.hbd.Selftest.DonorViewResultFragment;
@@ -67,7 +68,7 @@ public class DonorUserAdapter extends RecyclerView.Adapter<DonorUserAdapter.View
 
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,new ViewDonorProfileFragment(userModel.getUname(),userModel.getUblood(),userModel.getUage(),userModel.getUgender(),
-                        userModel.getUemail(), userModel.getUhandphone(), userModel.getUcaddress(), userModel.getUhos(), userModel.getUoccupation())).addToBackStack(null).commit();
+                        userModel.getUemail(), userModel.getUhandphone(), userModel.getUcaddress(), userModel.getUhos(), userModel.getUoccupation(), userModel.getUserprofimage())).addToBackStack(null).commit();
 
 
             }
@@ -80,7 +81,7 @@ public class DonorUserAdapter extends RecyclerView.Adapter<DonorUserAdapter.View
             public void onClick(View v) {
 
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,new DonorViewResultFragment()).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,new DonorViewResultFragment(userModel.getUserid())).addToBackStack(null).commit();
 
 
             }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newsbg"
+    android:background="@drawable/profilebg"
     tools:context=".Profile.DonorUpdateProfileFragment">
 
     <LinearLayout
@@ -15,43 +15,26 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="278dp"
-            android:background="@drawable/newsbg"
-            android:padding="20dp">
+            android:background="@drawable/uploadimage">
 
-            <ImageView
-                android:id="@+id/dprofileimg"
-                android:layout_width="124dp"
-                android:layout_height="124dp"
+
+            <com.jsibbold.zoomage.ZoomageView
+                android:id="@+id/dprofileimg12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:src="@drawable/buttonbg" />
+                android:scaleType="fitXY"
+                android:src="@drawable/uploadimage"
+                app:zoomage_animateOnReset="true"
+                app:zoomage_autoCenter="true"
+                app:zoomage_autoResetMode="UNDER"
+                app:zoomage_maxScale="8"
+                app:zoomage_minScale="0.6"
+                app:zoomage_restrictBounds="false"
+                app:zoomage_translatable="true"
+                app:zoomage_zoomable="true"
+                tools:ignore="MissingConstraints" />
 
-
-
-
-            <TextView
-                android:id="@+id/donorname1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="14dp"
-                android:layout_toRightOf="@+id/dprofileimg"
-                android:fontFamily="@font/aclonica"
-                android:includeFontPadding="false"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/donormail1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/donorname1"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/dprofileimg"
-                android:fontFamily="@font/aclonica"
-                android:includeFontPadding="false"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/usertypetext1"
@@ -61,11 +44,15 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="273dp"
                 android:layout_marginBottom="7dp"
+                android:visibility="invisible"
                 android:text=""
+                android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 android:textSize="15dp"
-                android:textAlignment="viewStart"
                 android:textStyle="bold" />
+
+
+
 
 
         </RelativeLayout>
@@ -76,6 +63,50 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="30dp">
+
+            <TextView
+                android:id="@+id/donorname1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edittextbg"
+                android:hint="Name"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.02"
+                app:layout_constraintHorizontal_bias="0.275"
+                android:drawableLeft="@drawable/nameicon"
+                android:drawablePadding="10dp"/>
+
+            <TextView
+                android:id="@+id/donormail1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/edittextbg"
+                android:hint="Email"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.02"
+                app:layout_constraintHorizontal_bias="0.275"
+                android:drawableLeft="@drawable/emailicon"
+                android:drawablePadding="10dp"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -95,7 +126,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/icicon"
@@ -124,7 +155,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:textColor="@color/black"
@@ -154,7 +185,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:textColor="@color/black"
@@ -170,6 +201,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edittextbg"
+                android:focusable="false"
                 android:textColor="@color/black"
                 android:hint="Date of Birth"
                 android:paddingLeft="20dp"
@@ -181,12 +213,15 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:id="@+id/dob1"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
+                    android:focusable="false"
                     android:background="@color/white"
                     android:textColor="@color/black"
                     android:drawableLeft="@drawable/calendaricon"
-                    android:drawablePadding="10dp" />
+                    android:drawablePadding="10dp"
+                    tools:ignore="InvalidId" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -321,8 +356,8 @@
                 <RadioButton
                     android:id="@+id/radio_divorceorwidow1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Divorced/Widowed"
+                    android:layout_height="60dp"
+                    android:text="Divorce\n /Widowed"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_marginLeft="3dp"/>
@@ -348,7 +383,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/occupationicon"
@@ -375,7 +410,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:textColor="@color/black"
@@ -402,7 +437,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/homeicon"
@@ -429,7 +464,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/faxicon"
@@ -456,7 +491,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/addressicon"
@@ -483,7 +518,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/stateicon"
@@ -510,7 +545,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="285dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/zipicon"
@@ -533,16 +568,19 @@
                 android:paddingBottom="12dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
+                android:focusable="false"
                 android:layout_marginLeft="10dp">
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="294dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/orgicon"
                     android:textColor="@color/black"
-                    android:drawablePadding="10dp" />
+                    android:focusable="false"
+                    android:layout_marginStart="9dp"
+                    android:drawablePadding="20dp" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -550,10 +588,12 @@
 
             <Button
                 android:id="@+id/updateprofileBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:background="@drawable/buttonbg"
+                android:layout_marginStart="120dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/buttonsavebg"
                 android:onClick="updateprofile"
                 android:text="Update"
                 android:textSize="20dp"
@@ -573,6 +613,47 @@
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/donorgender12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@+id/dprofileimg"
+                android:fontFamily="@font/aclonica"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:visibility="invisible"
+                android:text="Helllo"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/donormaritial12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@+id/dprofileimg"
+                android:fontFamily="@font/aclonica"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:visibility="invisible"
+                android:text="Helllo"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/donorrace12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@+id/dprofileimg"
+                android:fontFamily="@font/aclonica"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:visibility="invisible"
+                android:text="Helllo"
+                android:textSize="25dp" />
+
 
 
         </LinearLayout>

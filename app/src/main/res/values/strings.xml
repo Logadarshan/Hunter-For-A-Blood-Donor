@@ -44,11 +44,73 @@
     </string>
 
     <string-array name="hospital">
-        <item>ABC</item>
-        <item>BCD</item>
-        <item>DEF</item>
-        <item>GFH</item>
+        <item>Please Select</item>
+        <item>Pusat Darah Negara, Jalan Tun Razak, 50400 Kuala Lumpur</item>
+        <item>Hospital Sultanah Aminah, 80100 Johor Bharu, Johor</item>
+        <item>Hospital Tuanku Jaafar, Jalan Rasah, 70300 Seremban, Negeri Sembilan</item>
+        <item>Hospital Melaka, Jalan Mufti Hj.Khalil, 75499 Melaka</item>
+        <item>Hospital Raja Permaisuri Bainun, 30450 Ipoh, Perak</item>
+        <item>Hospital Tengku Ampuan Rahimah, 41200 Klang, Selangor</item>
+        <item>Hospital Sultanah Bahiyah, 05100 Alor Star, Kedah</item>
+        <item>Hospital Pulau Pinang, Jalan Residensi, 10450 Pulau Pinang</item>
+        <item>Hospital Tuanku Fauziah, 01000 Kangar, Perlis</item>
+        <item>Hospital Raja Perempuan Zainab II, Jalan Hospital, 15000 Kota Bharu, Kelantan</item>
+        <item>Hospital Sultanah Nur Zahirah, 20400 Kuala Terengganu, Terengganu</item>
+        <item>Hospital Tengku Ampuan Afzan, 25100 Kuantan, Pahang</item>
+        <item>Hospital Umum Sarawak, Jalan Tun Ahmad Zaidi Adruse, 93586 Kuching, Sarawak</item>
+        <item>Hospital Queen Elizabeth, 88586 Kota Kinabalu, Sabah</item>
     </string-array>
+
+
+    <string-array name="state">
+        <item>Please Select</item>
+        <item>Kuala Lumpur</item>
+        <item>Johor</item>
+        <item>Negeri Sembilan</item>
+        <item>Melaka</item>
+        <item>Perak</item>
+        <item>Selangor</item>
+        <item>Kedah</item>
+        <item>Pulau Pinang</item>
+        <item>Perlis</item>
+        <item>Kelantan</item>
+        <item>Terengganu</item>
+        <item>Pahang</item>
+        <item>Sarawak</item>
+        <item>Sabah</item>
+    </string-array>
+
+    <string-array name="blood">
+        <item>Please Select</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>Others</item>
+    </string-array>
+
+
+
+
+
+
+    <string name="title_activity_track_near_by">TrackNearByActivity</string>
+    <string name="googless_mapsss_key">AIzaSyA4WOa9TPGaa9rM0yM06wlUoCXPIa_skh4</string>
+    <string name="title_activity_near_by">NearByActivity</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_blood_banks">BloodBanksActivity</string>
 
 
 </resources>

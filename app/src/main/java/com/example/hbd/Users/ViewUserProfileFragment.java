@@ -1,20 +1,30 @@
 package com.example.hbd.Users;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hbd.R;
+import com.squareup.picasso.Picasso;
 
 
 public class ViewUserProfileFragment extends Fragment {
 
+    ImageView img1;
+    private static final int Gallery_Code=1;
+    Uri imageUrl=null;
     String Uname;
     String Ublood;
     String Uage;
@@ -23,13 +33,14 @@ public class ViewUserProfileFragment extends Fragment {
     String Uemail;
     String Uaddress;
     String Uhos;
+    String userprofimage;
 
     public ViewUserProfileFragment() {
 
     }
 
     public ViewUserProfileFragment(String Uname, String Ublood, String Uage ,String Ugender,String Uhandphone ,String Uemail,
-            String Uaddress ,String Uhos) {
+            String Uaddress ,String Uhos,  String userprofimage) {
 
         this.Uname = Uname;
         this.Ublood = Ublood;
@@ -39,6 +50,7 @@ public class ViewUserProfileFragment extends Fragment {
         this.Uemail = Uemail;
         this.Uaddress = Uaddress;
         this.Uhos = Uhos;
+        this.userprofimage = userprofimage;
     }
 
     // display user details
@@ -56,7 +68,7 @@ public class ViewUserProfileFragment extends Fragment {
         TextView emailuser = v.findViewById(R.id.usersemail);
         TextView adduser = v.findViewById(R.id.usersadd);
         TextView hosuser = v.findViewById(R.id.usershos);
-
+        img1 = v.findViewById(R.id.adminviewuserprofileimg);
 
 
         Button back = v.findViewById(R.id.backuserBtn);
@@ -70,7 +82,7 @@ public class ViewUserProfileFragment extends Fragment {
         emailuser.setText(Uemail);
         adduser.setText(Uaddress);
         hosuser.setText(Uhos);
-
+        Picasso.get().load(userprofimage).into(img1);
 
         // Navigate user interface
         back.setOnClickListener(new View.OnClickListener() {
@@ -89,4 +101,21 @@ public class ViewUserProfileFragment extends Fragment {
 
         return v;
     }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == Gallery_Code && resultCode == RESULT_OK)
+        {
+            imageUrl = data.getData();
+            img1.setImageURI(imageUrl);
+        }
+
+
+    }
+
+
+
 }

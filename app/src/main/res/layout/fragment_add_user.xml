@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/newsbg"
+    android:background="#F9C1B1"
     tools:context=".Users.AddUserFragment">
 
 
@@ -12,43 +12,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="60dp" >
+        android:padding="60dp">
 
 
         <TextView
             android:id="@+id/textstafftitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="00dp"
+            android:padding="6dp"
             android:text="Enter User details:"
             android:textColor="@color/black"
-            android:padding="6dp"
-            android:textSize="26dp"
-            android:layout_marginTop="00dp"/>
+            android:textSize="26dp" />
 
         <TextView
             android:id="@+id/textusername"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:padding="6dp"
             android:text="Name"
             android:textColor="@color/black"
-            android:padding="6dp"
-            android:textSize="16dp"
-            android:layout_marginTop="100dp"/>
+            android:textSize="16dp" />
 
         <EditText
             android:id="@+id/uusername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textusername"
-            android:hint="Enter user name"
-            android:inputType="text"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:padding="6dp"
             android:background="@color/white"
             android:drawableLeft="@drawable/nameicon"
             android:drawablePadding="10dp"
-            />
+            android:hint="Enter user name"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:padding="6dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
 
         <TextView
@@ -56,36 +56,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/uusername"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
             android:text="Email"
             android:textColor="@color/black"
-            android:padding="6dp"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="16dp" />
 
         <EditText
             android:id="@+id/useremail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textuseremail"
-            android:hint="Enter user email"
-            android:inputType="text"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:padding="6dp"
             android:background="@color/white"
             android:drawableLeft="@drawable/emailicon"
-            android:drawablePadding="10dp" />
+            android:drawablePadding="10dp"
+            android:hint="Enter user email"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:padding="6dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textuserpassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/useremail"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
             android:text="Password"
             android:textColor="@color/black"
-            android:padding="6dp"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="16dp" />
 
         <EditText
             android:id="@+id/userpassword"
@@ -98,9 +99,9 @@
             android:hint="Enter staff password"
             android:inputType="textVisiblePassword"
             android:padding="6dp"
+            android:text="123456"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:text="123456"/>
+            android:textSize="16sp" />
 
 
         <TextView
@@ -108,73 +109,95 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/userpassword"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
             android:text="Organization"
             android:textColor="@color/black"
-            android:padding="6dp"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="16dp" />
+
 
         <EditText
-            android:id="@+id/userhos"
+            android:id="@+id/userostate12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textuserhos"
-            android:hint="Enter staff organization"
-            android:inputType="text"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:padding="6dp"
             android:background="@color/white"
-            android:drawableLeft="@drawable/homeicon"
-            android:drawablePadding="10dp" />
+            android:drawableLeft="@drawable/stateicon"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:hint="Enter staff office state"
+            android:padding="6dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+        <EditText
+            android:id="@+id/useruhos12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userostate12"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/orgicon"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:hint="Enter staff hospital"
+            android:padding="6dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textuser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/userhos"
+            android:layout_below="@+id/useruhos12"
+            android:layout_marginTop="20dp"
+            android:padding="6dp"
             android:text="User Type"
             android:textColor="@color/black"
-            android:padding="6dp"
-            android:textSize="16dp"
-            android:layout_marginTop="20dp"/>
+            android:textSize="16dp" />
 
 
         <RadioGroup
             android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/textuser" >
+            android:layout_below="@+id/textuser"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/radio_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Admin"
-                android:textSize="16sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
             <RadioButton
                 android:id="@+id/radio_staff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:text="Staff"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:layout_marginLeft="20dp"/>
+                android:textSize="16sp" />
 
         </RadioGroup>
 
 
         <Button
             android:id="@+id/adduserdataBtn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/user"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="40dp"
-            android:text="Add"
-            android:background="@drawable/buttonbg"/>
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/buttonsavebg"
+            android:text="Add" />
 
 
     </RelativeLayout>

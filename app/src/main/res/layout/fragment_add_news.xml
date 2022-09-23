@@ -6,14 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newsbg"
+    android:background="#92DFF3"
     tools:context=".News.AddNewsFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/newsbg">
+        android:background="#92DFF3">
 
         <TextView
             android:id="@+id/addnews"
@@ -21,8 +21,9 @@
             android:layout_height="match_parent"
             android:layout_marginTop="42dp"
             android:ems="10"
+            android:layout_marginStart="15dp"
             android:fontFamily="@font/aclonica"
-            android:gravity="center"
+            android:gravity="left"
             android:inputType="textPersonName"
             android:text="Add News"
             android:textColor="@color/black"
@@ -30,6 +31,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="60dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/backimg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/newstitle"
@@ -45,6 +58,7 @@
             android:paddingTop="5dp"
             android:paddingBottom="12dp"
             android:hint="Title"
+            android:textColorHint="@color/black"
             android:textColor="@color/black"
             android:background="@drawable/edittextbg"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,6 +91,7 @@
             android:paddingTop="5dp"
             android:paddingBottom="12dp"
             android:hint="Description"
+            android:textColorHint="@color/black"
             app:errorTextColor="@color/black"
             android:background="@drawable/edittextbg"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,12 +111,12 @@
 
         <Button
             android:id="@+id/savebtn"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"
             android:textSize="16dp"
             android:textStyle="bold"
-            android:background="@drawable/buttonbg"
+            android:background="@drawable/buttonsavebg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,13 +134,14 @@
             android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
             android:scaleType="fitXY"
+            android:background="@drawable/uploadimage"
             app:layout_constraintBottom_toTopOf="@+id/newstitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.384"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addnews"
             app:layout_constraintVertical_bias="0.0"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            tools:srcCompat="@drawable/uploadimage" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.hbd.News;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hbd.Adapter.NewsAdapter;
+import com.example.hbd.Model.AppointmentModel;
 import com.example.hbd.Model.NewsModel;
+import com.example.hbd.Others.SpacesItemDecoration;
 import com.example.hbd.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
@@ -21,6 +25,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
@@ -28,13 +37,12 @@ import java.util.List;
 
 public class NewsfeedFragment extends Fragment {
 
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
     FirebaseStorage firebaseStorage;
     RecyclerView recyclerView;
     NewsAdapter newsAdapter;
     List<NewsModel> newsModelList;
     FloatingActionButton floatingActionButton;
+    FirebaseFirestore firebaseFirestore ;
 
 
 
@@ -46,13 +54,13 @@ public class NewsfeedFragment extends Fragment {
 
 
 
-        firebaseDatabase  = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("news");
+
         firebaseStorage   = FirebaseStorage.getInstance();
         floatingActionButton = v.findViewById(R.id.addfloatbutton);
         recyclerView = v.findViewById(R.id.rvview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         // Navigate to add news interface
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -70,49 +78,48 @@ public class NewsfeedFragment extends Fragment {
 
         recyclerView.setAdapter(newsAdapter);
 
-        // display list of news in the database for staff
-        databaseReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                NewsModel newsModel = snapshot.getValue(NewsModel.class);
-                newsModelList.add(newsModel);
-                newsAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-
-
-
+        initView();
+        EventChangeListner();
 
       return v;
 
 
     }
 
+    private void initView() {
 
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(4));
+
+    }
+
+
+
+    private void EventChangeListner() {
+
+
+        firebaseFirestore.collection("News")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if(error != null){
+                            Log.e("Error", error.getMessage());
+                        }
+                        for (DocumentChange documentChange : value.getDocumentChanges()){
+
+                            if(documentChange.getType() == DocumentChange.Type.ADDED){
+                                newsModelList.add(documentChange.getDocument().toObject(NewsModel.class));
+                            }
+                            newsAdapter.notifyDataSetChanged();
+
+                        }
+                    }
+                });
+
+
+    }
 
 
 }

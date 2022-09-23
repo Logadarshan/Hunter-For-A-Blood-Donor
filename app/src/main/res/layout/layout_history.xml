@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardviewhistory"
+    app:cardCornerRadius="30dp"
+    android:layout_marginBottom="20dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_below="@+id/selectbtn1"
+    android:background="@color/white"
+    android:layout_marginTop="20dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/hosnameapp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Name"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/nameicon"
+                android:gravity="left" />
+
+
+            <TextView
+                android:id="@+id/hosdateapp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Date"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/dateicon"
+                android:gravity="left" />
+
+            <TextView
+                android:id="@+id/hostimeapp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Time"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/timeicon"
+                android:gravity="left" />
+
+            <TextView
+                android:id="@+id/hoslocation1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Place"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/orgicon"
+                android:gravity="left" />
+
+            <TextView
+                android:id="@+id/hosstatus1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Pending...."
+                android:textSize="20dp"
+                android:textColor="#ff0000"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
+                android:gravity="right" />
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

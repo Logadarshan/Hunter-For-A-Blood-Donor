@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/newsbg"
+    android:background="#92DFF3"
     android:orientation="vertical"
     tools:context=".News.UpdateNewsFragment">
 
@@ -22,16 +22,28 @@
             android:layout_height="match_parent"
             android:layout_marginTop="32dp"
             android:ems="10"
-            android:gravity="center"
+            android:gravity="left"
             android:fontFamily="@font/aclonica"
             android:inputType="textPersonName"
             android:text="Update News"
+            android:layout_marginStart="15dp"
             android:textColor="@color/black"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.159"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/updatenewsimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/buttonbg" />
 
         <TextView
             android:id="@+id/updatenewsid1"
@@ -107,14 +119,15 @@
 
         <Button
             android:id="@+id/newsupdatebtn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:background="@drawable/buttonbg"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/buttonsavebg"
             android:text="Update"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="15dp"
+            android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="50dp"
             android:layout_marginLeft="10dp"/>

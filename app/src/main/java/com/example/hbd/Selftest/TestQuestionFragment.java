@@ -1,9 +1,11 @@
 package com.example.hbd.Selftest;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +13,23 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hbd.Appointment.AppointmentFragment;
+import com.example.hbd.Home.DonorHome;
 import com.example.hbd.Model.TestModel;
+import com.example.hbd.Others.Common;
 import com.example.hbd.R;
+import com.example.hbd.Signup;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class TestQuestionFragment extends Fragment {
@@ -42,7 +50,7 @@ public class TestQuestionFragment extends Fragment {
     FirebaseUser firebaseUser;
     FirebaseAuth fAuth;
     DatabaseReference databaseReference;
-    FirebaseFirestore fStore;
+    FirebaseFirestore firebaseFirestore;
     String userID;
     Dialog dialog;
 
@@ -86,7 +94,7 @@ public class TestQuestionFragment extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Test");
         fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         // insert test data into database
         testagree.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +179,7 @@ public class TestQuestionFragment extends Fragment {
         String dquestion9  = radioButtonQuestion9.getText().toString();
         String dquestion10 = radioButtonQuestion10.getText().toString();
         String resultans;
+        String testid = Common.generateString(6);
         firebaseUser = fAuth.getCurrentUser();
         String usertestid = firebaseUser.getUid();
 
@@ -193,9 +202,19 @@ public class TestQuestionFragment extends Fragment {
 
         // insert into the database
         TestModel testModel = new TestModel(dquestion1, dquestion2,  dquestion3, dquestion4, dquestion5,
-                dquestion6,  dquestion7,  dquestion8, dquestion9,  dquestion10, resultans,usertestid);
+                dquestion6,  dquestion7,  dquestion8, dquestion9,  dquestion10, resultans,usertestid, testid);
 
-        databaseReference.child(usertestid).setValue(testModel);
+
+
+
+       // databaseReference.child(usertestid).setValue(testModel);
+        DocumentReference documentReference = firebaseFirestore.collection("User").document(firebaseUser.getUid()).collection("Test").document(firebaseUser.getUid());
+        documentReference.set(testModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getActivity(), "Test recorded successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
