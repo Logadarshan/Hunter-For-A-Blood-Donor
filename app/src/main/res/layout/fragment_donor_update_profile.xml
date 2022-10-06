@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="30dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/donorname1"
@@ -602,7 +602,7 @@
 
             <TextView
                 android:id="@+id/changepassword"
-                android:layout_width="393dp"
+                android:layout_width="399dp"
                 android:layout_height="39dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"

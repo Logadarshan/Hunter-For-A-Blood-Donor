@@ -5,17 +5,18 @@ import android.os.Parcelable;
 
 public class HospitalModel implements Parcelable {
 
-    String name, address,hospitalid, Image;
+    String name, address,hospitalid, Image,num;
 
 
     public HospitalModel() {
     }
 
-    public HospitalModel(String name, String address, String hospitalid,String Image) {
+    public HospitalModel(String name, String address, String hospitalid,String Image,String num) {
         this.name = name;
         this.address = address;
         this.hospitalid = hospitalid;
         this.Image = Image;
+        this.num = num;
     }
 
     public String getName() {
@@ -78,5 +79,13 @@ public class HospitalModel implements Parcelable {
 
     public void setImage(String image) {
         Image = image;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
     }
 }

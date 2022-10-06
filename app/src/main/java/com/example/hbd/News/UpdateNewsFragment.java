@@ -46,13 +46,14 @@ public class UpdateNewsFragment extends Fragment {
     String Des;
     String Id;
     String Image;
+    String link;
     NewsModel newsModel ;
     DatabaseReference databaseReference;
     private static final int Gallery_Code=1;
     Uri imageUrl=null;
     CollectionReference documentReference;
     ImageView newpro;
-    TextInputLayout newsedittitle ,newseditdes ;
+    TextInputLayout newsedittitle ,newseditdes ,newseditlink ;
     TextView newsid;
     StorageReference storageReference;
     FirebaseFirestore firebaseFirestore;
@@ -62,11 +63,12 @@ public class UpdateNewsFragment extends Fragment {
 
     }
 
-    public UpdateNewsFragment(String title, String des, String Id, String Image) {
+    public UpdateNewsFragment(String title, String des, String Id, String Image, String link) {
         this.Title = title;
         this.Des = des;
         this.Id = Id;
         this.Image = Image;
+        this.link = link;
 
 
     }
@@ -80,6 +82,7 @@ public class UpdateNewsFragment extends Fragment {
 
          newsedittitle = v.findViewById(R.id.editnewstitle);
          newseditdes = v.findViewById(R.id.editnewsdescription);
+         newseditlink = v.findViewById(R.id.editnewslink);
          newsid = v.findViewById(R.id.updatenewsid1);
          newpro = v.findViewById(R.id.updatenewsimg);
          Button updatenews = v.findViewById(R.id.newsupdatebtn);
@@ -88,6 +91,7 @@ public class UpdateNewsFragment extends Fragment {
 
         newsedittitle.getEditText().setText(Title);
         newseditdes.getEditText().setText(Des);
+        newseditlink.getEditText().setText(link);
         newsid.setText(Id);
         Picasso.get().load(Image).into(newpro);
 
@@ -127,6 +131,7 @@ public class UpdateNewsFragment extends Fragment {
         map1.put("Id", newsid.getText().toString());
         map1.put("Title", newsedittitle.getEditText().getText().toString());
         map1.put("Des", newseditdes.getEditText().getText().toString());
+        map1.put("link", newseditlink.getEditText().getText().toString());
 
 
         documentReference= FirebaseFirestore.getInstance().

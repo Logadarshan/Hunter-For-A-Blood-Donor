@@ -12,11 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.hbd.Model.TestModel;
 import com.example.hbd.Model.UserModel;
 import com.example.hbd.R;
 import com.example.hbd.Selftest.DonorViewResultFragment;
-import com.example.hbd.Users.DonorUserFragment;
+import com.example.hbd.Users.DonorDirectoryFragment;
 import com.example.hbd.Users.ViewDonorProfileFragment;
 import com.squareup.picasso.Picasso;
 
@@ -24,10 +23,10 @@ import java.util.List;
 
 public class DonorUserAdapter extends RecyclerView.Adapter<DonorUserAdapter.ViewHolder>{
 
-    DonorUserFragment context;
+    DonorDirectoryFragment context;
     List<UserModel> userModelList;
 
-    public DonorUserAdapter(DonorUserFragment context, List<UserModel> userModelList) {
+    public DonorUserAdapter(DonorDirectoryFragment context, List<UserModel> userModelList) {
         this.context = context;
         this.userModelList = userModelList;
     }

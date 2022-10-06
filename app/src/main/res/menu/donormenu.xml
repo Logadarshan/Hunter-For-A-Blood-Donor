@@ -6,16 +6,16 @@
         android:title="Profile"
         android:icon="@drawable/profileicon"/>
     <item
-        android:id="@+id/Appointment"
-        android:title="Appointment"
-        android:icon="@drawable/appointmenticon"/>
+        android:id="@+id/SelfTest"
+        android:title="SelfTest"
+        android:icon="@drawable/selftesticon"/>
     <item
         android:id="@+id/NewsFeed"
         android:title="NewFeed"
         android:icon="@drawable/newsfeedicon"/>
     <item
-        android:id="@+id/SelfTest"
-        android:title="SelfTest"
-        android:icon="@drawable/selftesticon"/>
+        android:id="@+id/Appointment"
+        android:title="Appointment"
+        android:icon="@drawable/appointmenticon"/>
 
 </menu>

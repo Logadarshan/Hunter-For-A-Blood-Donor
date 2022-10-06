@@ -6,16 +6,18 @@ public class NewsModel {
     String Des;
     String Image;
     String Id;
+    String link;
 
 
     public NewsModel() {
     }
 
-    public NewsModel(String title, String des, String image, String Id) {
+    public NewsModel(String title, String des, String image, String Id, String link) {
         Title = title;
         Des = des;
         Image = image;
         Id = Id;
+        link = link;
     }
 
     public String getTitle() {
@@ -48,5 +50,13 @@ public class NewsModel {
 
     public void setId(String id) {
         Id = id;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

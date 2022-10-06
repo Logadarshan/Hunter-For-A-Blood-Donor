@@ -71,7 +71,7 @@ public class ViewUserProfileFragment extends Fragment {
         img1 = v.findViewById(R.id.adminviewuserprofileimg);
 
 
-        Button back = v.findViewById(R.id.backuserBtn);
+
 
 
         nameuser.setText(Uname);
@@ -83,19 +83,6 @@ public class ViewUserProfileFragment extends Fragment {
         adduser.setText(Uaddress);
         hosuser.setText(Uhos);
         Picasso.get().load(userprofimage).into(img1);
-
-        // Navigate user interface
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Fragment user = new UserFragment();
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.container,user).commit();
-
-
-            }
-        });
 
 
 

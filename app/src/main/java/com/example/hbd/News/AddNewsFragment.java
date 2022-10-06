@@ -44,12 +44,10 @@ import java.util.Map;
 
 public class AddNewsFragment extends Fragment {
 
-    TextInputLayout newstitle, newsdesc;
-    TextInputEditText newstitletext, newsdesctext;
+    TextInputLayout newstitle, newsdesc,newslink;
+    TextInputEditText newstitletext, newsdesctext,newslinktext;
     Button savebtn;
     ImageButton imgnewsbtn,backbtn;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
     FirebaseStorage firebaseStorage;
     private static final int Gallery_Code=1;
     Uri imageUrl=null;
@@ -68,14 +66,15 @@ public class AddNewsFragment extends Fragment {
 
         newstitle = v.findViewById(R.id.newstitle);
         newsdesc = v.findViewById(R.id.newsdec);
+        newslink = v.findViewById(R.id.newslink);
         newstitletext = v.findViewById(R.id.newstitletext);
         newsdesctext = v.findViewById(R.id.newsdesctext);
+        newslinktext = v.findViewById(R.id.newslinktext);
         savebtn = v.findViewById(R.id.savebtn);
         imgnewsbtn = v.findViewById(R.id.imagenewsBtn);
         backbtn = v.findViewById(R.id.backBtn);
 
-        firebaseDatabase  = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("News");
+
         firebaseStorage   = FirebaseStorage.getInstance();
         progressDialog = new ProgressDialog(this.getContext());
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -126,6 +125,7 @@ public class AddNewsFragment extends Fragment {
             public void onClick(View v) {
                 final String ntitle = newstitletext.getText().toString().trim();
                 final String ndesc = newsdesctext.getText().toString().trim();
+                final String nlink = newslinktext.getText().toString().trim();
 
 
 
@@ -153,7 +153,6 @@ public class AddNewsFragment extends Fragment {
 
                                     String t = task.getResult().toString();
 
-                                    DatabaseReference newPost = databaseReference.push();
 
                                     String id = Common.generateString(6);
 
@@ -161,6 +160,7 @@ public class AddNewsFragment extends Fragment {
                                     map.put("Id" , id);
                                     map.put("Title" , ntitle);
                                     map.put("Des", ndesc);
+                                    map.put("link", nlink);
                                     map.put("Image",task.getResult().toString());
 
 

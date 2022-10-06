@@ -55,6 +55,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.MyView
         HospitalModel hospitalModel = hospitalModelList.get(position);
         holder.hosname.setText(hospitalModelList.get(position).getName());
         holder.hosadd.setText(hospitalModelList.get(position).getAddress());
+        holder.hosnum.setText(hospitalModelList.get(position).getNum());
         Glide.with(holder.hosimga.getContext()).load(hospitalModel.getImage()).into(holder.hosimga);
 
         //display news images
@@ -94,7 +95,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView hosname, hosadd;
+        TextView hosname, hosadd,hosnum;
         CardView card_hos;
         ZoomageView hosimga;
 
@@ -111,6 +112,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.MyView
             hosadd = itemView.findViewById(R.id.hosadd);
             card_hos = itemView.findViewById(R.id.cardview);
             hosimga = itemView.findViewById(R.id.hosimg);
+            hosnum = itemView.findViewById(R.id.hosnum);
 
             itemView.setOnClickListener(this);
 

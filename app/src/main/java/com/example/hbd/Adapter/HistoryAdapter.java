@@ -9,10 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hbd.Model.AppointmentModel;
-import com.example.hbd.Model.UserModel;
 import com.example.hbd.Profile.ViewHistoryFragment;
 import com.example.hbd.R;
-import com.example.hbd.Users.DonorUserFragment;
 
 import java.util.List;
 

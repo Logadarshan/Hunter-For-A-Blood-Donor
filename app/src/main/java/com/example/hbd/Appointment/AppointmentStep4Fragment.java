@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -41,7 +42,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -65,13 +69,18 @@ public class AppointmentStep4Fragment extends Fragment {
     TextView userdate;
     @BindView(R.id.uhos)
     TextView userhosp;
+    @BindView(R.id.ublood)
+    TextView userblood;
+
+
+
 
     FirebaseUser firebaseUser;
     FirebaseAuth fAuth;
     FirebaseFirestore firebaseFirestore;
     DatabaseReference databaseReference,databaseReference1;
     FirebaseDatabase firebaseDatabase;
-    String uname, userID;
+    String uname, userID,ublood;
 
 
     @BindView(R.id.saveapp)
@@ -93,27 +102,23 @@ public class AppointmentStep4Fragment extends Fragment {
 
     private void setData() {
 
-        userID = firebaseUser.getUid();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+
+        String userID = firebaseUser.getUid();
+
+
+        DocumentReference documentReference = firebaseFirestore.collection("User").document(userID);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                UserModel userModel = snapshot.getValue(UserModel.class);
-                if(userModel != null){
-
-                  uname = userModel.getUname();
-
-                    usersname.setText(uname);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                usersname.setText(value.getString("uname"));
+                userblood.setText(value.getString("ublood"));
 
             }
         });
+
+
 
         usertime.setText(Common.currentdate.getTime());
         userdate.setText(Common.currentdate.getDate());
@@ -142,11 +147,13 @@ public class AppointmentStep4Fragment extends Fragment {
         appointmentModel.setTimeappointment(Common.currentdate.getTime());
         appointmentModel.setHospappointment(Common.appointmenthospital);
         appointmentModel.setStatusappointment("Awaiting");
-        appointmentModel.setUsernameappoint(uname);
+        appointmentModel.setUsernameappoint(usersname.getText().toString());
         appointmentModel.setAppointmentid(Common.appointments);
         appointmentModel.setUseridappointment(userID);
         appointmentModel.setAppslotid(Common.currentdate.getSlotid());
         appointmentModel.setApploc(Common.city);
+        appointmentModel.setUserblood(userblood.getText().toString());
+
 
 
         CollectionReference documentReference1 =firebaseFirestore.collection("State").document(Common.city)

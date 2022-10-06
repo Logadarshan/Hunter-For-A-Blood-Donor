@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/newsbg"
+    tools:context=".Camp.AddCampDetailsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+
+        <TextView
+            android:id="@+id/title_camp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="31dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/aclonica"
+            android:text="New Campaign Details"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/camporg1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_camp"
+            android:background="@drawable/edittextbg"
+            android:textColor="@color/black"
+            android:hint="Organization"
+            android:textColorHint="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="12dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:focusable="false"
+            android:layout_marginLeft="10dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/orgicon"
+                android:textColor="@color/black"
+                android:focusable="false"
+                android:layout_marginStart="9dp"
+                android:drawablePadding="20dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/campname1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/camporg1"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edittextbg"
+            android:hint="Campaign Name"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="9dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/titleicon"
+                android:drawablePadding="20dp"
+                android:textColor="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/campdate1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/campname1"
+            android:background="@drawable/edittextbg"
+            android:textColor="@color/black"
+            android:hint="Campaign Date"
+            android:textColorHint="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:focusable="false"
+            android:layout_marginLeft="10dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/camporgdate1"
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:focusable="false"
+                android:drawableLeft="@drawable/dateicon"
+                android:textColor="@color/black"
+                android:layout_marginStart="9dp"
+                android:drawablePadding="20dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/camptime1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/campdate1"
+            android:background="@drawable/edittextbg"
+            android:textColor="@color/black"
+            android:hint="Camp Time"
+            android:textColorHint="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="10dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/timeicon"
+                android:textColor="@color/black"
+                android:layout_marginStart="9dp"
+                android:drawablePadding="20dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/addcampBtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/camptime1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/buttonsavebg"
+            android:onClick="updateprofile"
+            android:text="Save"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/campstate1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addcampBtn1"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edittextbg"
+            android:hint="State"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="11dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.275"
+            android:drawableLeft="@drawable/stateicon"
+            android:drawablePadding="10dp"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>

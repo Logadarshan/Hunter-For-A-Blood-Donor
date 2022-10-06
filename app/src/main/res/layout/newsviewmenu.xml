@@ -90,6 +90,26 @@
             app:layout_constraintTop_toBottomOf="@+id/newsimage"
             app:layout_constraintVertical_bias="0.0" />
 
+
+        <TextView
+            android:id="@+id/newslink"
+            android:layout_width="340dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"
+            android:paddingBottom="10dp"
+            android:text=""
+            android:textColor="#0000FF"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsdescription"
+            app:layout_constraintVertical_bias="0.0" />
+
         <ImageButton
             android:id="@+id/newseditbtn"
             android:layout_width="51dp"

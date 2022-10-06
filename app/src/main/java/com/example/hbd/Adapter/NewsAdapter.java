@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +63,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.ntitle.setText(newsModel.getTitle());
         holder.ndesc.setText(newsModel.getDes());
         holder.nid.setText(newsModel.getId());
+        holder.nlink.setText(newsModel.getLink());
         Glide.with(holder.newimg.getContext()).load(newsModel.getImage()).into(holder.newimg);
+
+
+        holder.nlink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openLink = new Intent(Intent.ACTION_VIEW, Uri.parse(holder.nlink.getText().toString()));
+                context.startActivity(openLink);
+            }
+        });
 
         //display news images
 
@@ -88,7 +101,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
 
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,new UpdateNewsFragment(newsModel.getTitle(),newsModel.getDes(), newsModel.getId(),newsModel.getImage())).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,new UpdateNewsFragment(newsModel.getTitle(),newsModel.getDes(), newsModel.getId(),newsModel.getImage(),newsModel.getLink())).addToBackStack(null).commit();
 
 
             }
@@ -144,7 +157,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
 
         ZoomageView  newimg;
-        TextView ntitle, ndesc,nid;
+        TextView ntitle, ndesc,nid,nlink;
         ImageButton ndeletebtn,nupdatebtn;
 
         public ViewHolder(@NonNull View itemView) {
@@ -155,6 +168,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             ntitle = itemView.findViewById(R.id.titlefornews);
             ndesc = itemView.findViewById(R.id.newsdescription);
             nid = itemView.findViewById(R.id.newsid);
+            nlink = itemView.findViewById(R.id.newslink);
             ndeletebtn = itemView.findViewById(R.id.newsdeletebtn);
             nupdatebtn = itemView.findViewById(R.id.newseditbtn);
 

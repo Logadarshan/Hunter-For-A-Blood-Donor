@@ -75,7 +75,7 @@ public class AppointmentFragment extends Fragment {
     ImageButton appappointmentBtn, viewhistory,locationBtn;
     CardView cardView;
     Button deleteappBtn, changeappBtn;
-    TextView hosptime,hosploc, hospdate,hospstatus,hospslot,hospcity,sbalslot;
+    TextView hosptime,hosploc, hospdate,hospstatus,hospslot,hospcity,sbalslot,hosnum1;
     Activity context;
     FirebaseUser firebaseUser;
     FirebaseAuth fAuth;
@@ -110,6 +110,7 @@ public class AppointmentFragment extends Fragment {
         hospcity = v.findViewById(R.id.hoscity);
         hospslot = v.findViewById(R.id.hosslotid);
         sbalslot = v.findViewById(R.id.hosbalslot);
+        hosnum1  = v.findViewById(R.id.hosconnum1);
         appappointmentBtn = v.findViewById(R.id.addappointBtn);
         viewhistory = v.findViewById(R.id.viewhistoryBtn);
         locationBtn = v.findViewById(R.id.tracklocationBtn);
@@ -360,6 +361,7 @@ public class AppointmentFragment extends Fragment {
                                     hospcity.setText(document.getString("apploc"));
                                     hospslot.setText(document.getString("appslotid"));
                                     sbalslot.setText(document.getString("balslot"));
+                                    loadnum();
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                               }
 
@@ -373,5 +375,27 @@ public class AppointmentFragment extends Fragment {
                 });
 
     }
+
+    private void loadnum() {
+
+
+
+
+        DocumentReference documentReference = firebaseFirestore.collection("State").document(hospcity.getText().toString())
+                .collection("Branch")
+                .document(hosploc.getText().toString());
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+
+                hosnum1.setText(value.getString("num"));
+
+            }
+        });
+
+
+    }
+
 
 }

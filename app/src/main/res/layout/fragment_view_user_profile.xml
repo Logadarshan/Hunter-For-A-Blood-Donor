@@ -183,14 +183,6 @@
             android:drawableLeft="@drawable/orgicon"
             android:drawablePadding="10dp"/>
 
-        <Button
-            android:id="@+id/backuserBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/hosorg"
-            android:layout_marginTop="50dp"
-            android:text="Back"
-            android:background="@drawable/buttonbg"/>
 
 
     </LinearLayout>

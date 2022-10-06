@@ -44,10 +44,6 @@ public class DonorHome extends AppCompatActivity {
                         // View Profile Page
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,profileFragment).commit();
                         return true;
-                    case R.id.Appointment:
-                        // Appointment Page for Donor
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,appointmentFragment).commit();
-                        return true;
                     case R.id.NewsFeed:
                         // News Feed Page for Donor
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,donorNewsViewFragment).commit();
@@ -55,6 +51,10 @@ public class DonorHome extends AppCompatActivity {
                     case R.id.SelfTest:
                         // Self Test Page for Donor
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,selfTestFragment).commit();
+                        return true;
+                    case R.id.Appointment:
+                        // Appointment Page for Donor
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,appointmentFragment).commit();
                         return true;
 
                 }

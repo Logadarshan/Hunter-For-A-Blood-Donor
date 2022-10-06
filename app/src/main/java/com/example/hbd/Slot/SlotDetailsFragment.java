@@ -142,7 +142,35 @@ public class SlotDetailsFragment extends Fragment {
                             .collection("Date").document(slotdate1)
                             .collection("Slot");
 
-                    documentReference.document(slotid).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                    firebaseFirestore.collection("Appointment")
+                            .whereEqualTo("appslotid", slotid)
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                                    if(task.isSuccessful()){
+
+                                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                                        String documentID = documentSnapshot.getId();
+                                        String data1 = documentSnapshot.getString("statusappointment");
+
+                                        if (data1.contains("A"))
+                                        {
+                                            firebaseFirestore.collection("Appointment")
+                                                    .document(documentID)
+                                                    .update("statusappointment", "Slot Cancelled");
+
+                                        }
+
+                                    }
+
+
+                                }
+                            });
+
+                  documentReference.document(slotid).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Fragment viewslot = new SlotFragment();

@@ -17,7 +17,7 @@
         android:background="@drawable/newsbg" >
 
         <com.jsibbold.zoomage.ZoomageView
-            android:id="@+id/newsimage"
+            android:id="@+id/newsimage1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:zoomage_restrictBounds="false"
@@ -33,13 +33,13 @@
             android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titlefornews"
+            app:layout_constraintTop_toBottomOf="@+id/titlefornews1"
             tools:src="@tools:sample/avatars"
             tools:ignore="MissingConstraints" />
 
 
         <TextView
-            android:id="@+id/titlefornews"
+            android:id="@+id/titlefornews1"
             android:layout_width="302dp"
             android:layout_height="45dp"
             android:layout_marginStart="32dp"
@@ -53,7 +53,7 @@
             app:layout_editor_absoluteX="20dp" />
 
         <TextView
-            android:id="@+id/newsdescription"
+            android:id="@+id/newsdescription1"
             android:layout_width="340dp"
             android:layout_height="match_parent"
             android:layout_marginTop="36dp"
@@ -68,7 +68,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newsimage"
+            app:layout_constraintTop_toBottomOf="@+id/newsimage1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/newslink1"
+            android:layout_width="340dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"
+            android:paddingBottom="10dp"
+            android:text=""
+            android:textColor="#0000FF"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsdescription1"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.example.hbd.Adapter;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +48,19 @@ public class DonorNewsAdapter extends RecyclerView.Adapter<DonorNewsAdapter.View
         NewsModel newsModel = newsModelList.get(position);
         holder.ntitle.setText(newsModel.getTitle());
         holder.ndesc.setText(newsModel.getDes());
+        holder.nlink.setText(newsModel.getLink());
         Glide.with(holder.newimg.getContext()).load(newsModel.getImage()).into(holder.newimg);
+
+
+        holder.nlink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent openLink = new Intent(Intent.ACTION_VIEW, Uri.parse(holder.nlink.getText().toString()));
+                context.startActivity(openLink);
+            }
+        });
+
 
 
         // load news images
@@ -66,18 +80,17 @@ public class DonorNewsAdapter extends RecyclerView.Adapter<DonorNewsAdapter.View
 
 
         ZoomageView newimg;
-        TextView ntitle, ndesc;
-        ImageButton ndeletebtn,nupdatebtn;
+        TextView ntitle, ndesc,nlink;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
 
-            newimg = itemView.findViewById(R.id.newsimage);
-            ntitle = itemView.findViewById(R.id.titlefornews);
-            ndesc = itemView.findViewById(R.id.newsdescription);
-            ndeletebtn = itemView.findViewById(R.id.newsdeletebtn);
-            nupdatebtn = itemView.findViewById(R.id.newsupdatebtn);
+            newimg = itemView.findViewById(R.id.newsimage1);
+            ntitle = itemView.findViewById(R.id.titlefornews1);
+            ndesc = itemView.findViewById(R.id.newsdescription1);
+            nlink = itemView.findViewById(R.id.newslink1);
+
 
 
         }

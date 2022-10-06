@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/newsbg"
+    tools:context=".Camp.ViewCampFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/newsbg">
+
+        <TextView
+            android:id="@+id/title_camp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Please select the campaign :"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/adamina" />
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinnercamp2"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_camp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyelercamp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchBtn2"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/searchBtn2"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnercamp2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="284dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/newsbg"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:text="Search"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/refreshBtn2"
+            android:layout_width="123dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnercamp2"
+            android:layout_alignEnd="@+id/searchBtn2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="156dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="132dp"
+            android:background="@drawable/newsbg"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:text="Refresh"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/camporg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recyelercamp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edittextbg"
+            android:focusable="false"
+            android:hint="Organization"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="12dp"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            app:hintTextColor="@color/black">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="9dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/orgicon"
+                android:drawablePadding="20dp"
+                android:focusable="false"
+                android:textColor="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/campstate2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recyelercamp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edittextbg"
+            android:focusable="false"
+            android:hint="Organization"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="12dp"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            app:hintTextColor="@color/black">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="9dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/orgicon"
+                android:drawablePadding="20dp"
+                android:focusable="false"
+                android:textColor="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

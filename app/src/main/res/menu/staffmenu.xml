@@ -14,10 +14,13 @@
         android:title="NewFeed"
         android:icon="@drawable/newsfeedicon"/>
     <item
+        android:id="@+id/Camp1"
+        android:title="Campaign"
+        android:icon="@drawable/campicon"/>
+    <item
         android:id="@+id/Users1"
         android:title="Users"
         android:icon="@drawable/usersicon"/>
-
 
 
 </menu>

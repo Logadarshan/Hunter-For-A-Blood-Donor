@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F9C1B1"
+    tools:context=".Users.AddStaffFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="60dp">
+
+
+        <TextView
+            android:id="@+id/textstafftitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="00dp"
+            android:padding="6dp"
+            android:text="Enter Staff details:"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/textusername"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:padding="6dp"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/uusername123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textusername"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/nameicon"
+            android:drawablePadding="10dp"
+            android:hint="Enter user name"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:padding="6dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/textuseremail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/uusername123"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/useremail123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textuseremail"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/emailicon"
+            android:drawablePadding="10dp"
+            android:hint="Enter user email"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:padding="6dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textuserpassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/useremail123"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
+            android:text="Password"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/userpassword123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textuserpassword"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/passwordicon"
+            android:drawablePadding="10dp"
+            android:hint="Enter staff password"
+            android:inputType="textVisiblePassword"
+            android:padding="6dp"
+            android:text="123456"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/textuserhos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/userpassword123"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
+            android:text="Organization"
+            android:visibility="invisible"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <EditText
+            android:id="@+id/userostate123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textuserhos"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/stateicon"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:hint="Enter staff office state"
+            android:padding="6dp"
+            android:text=""
+            android:visibility="invisible"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/useruhos123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userostate123"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/orgicon"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:visibility="invisible"
+            android:hint="Enter staff hospital"
+            android:padding="6dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/adduserdataBtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/useruhos123"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/buttonsavebg"
+            android:text="Add" />
+
+
+    </RelativeLayout>
+
+</ScrollView>

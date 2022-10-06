@@ -45,8 +45,6 @@ public class AddUserFragment extends Fragment {
 
     EditText adminstaffname,adminstaffemail,adminstaffpassword,adminstafforg,adminstaffostate;
     Button addadminstaff;
-    RadioGroup radioGroupUser;
-    RadioButton radioButtonUser;
 
     FirebaseDatabase firebaseDatabase;
     FirebaseUser firebaseUser;
@@ -88,7 +86,6 @@ public class AddUserFragment extends Fragment {
         adminstaffostate = V.findViewById(R.id.userostate12);
         adminstafforg = V.findViewById(R.id.useruhos12);
         addadminstaff = V.findViewById(R.id.adduserdataBtn);
-        radioGroupUser = V.findViewById(R.id.user);
         dialog = new Dialog(this.getContext());
         firebaseFirestore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -159,12 +156,11 @@ public class AddUserFragment extends Fragment {
                     firebaseUser = fAuth.getCurrentUser();
                     adduser = firebaseUser.getUid();
                     firebaseDatabase = FirebaseDatabase.getInstance();
-                    int selectedUserId = radioGroupUser.getCheckedRadioButtonId();
-                    radioButtonUser = V.findViewById(selectedUserId);
+
 
                     Map<String,Object> user = new HashMap<>();
                     user.put("ostate",ostate1);
-                    user.put("usertype",radioButtonUser.getText().toString());
+                    user.put("usertype","Admin");
                     user.put("uname",adminstaffname.getText().toString());
                     user.put("uhos",uhos1);
                     user.put("uemail",uemail);

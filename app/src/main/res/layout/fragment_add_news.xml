@@ -108,6 +108,37 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/newslink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="12dp"
+            android:hint="Link"
+            android:textColorHint="@color/black"
+            app:errorTextColor="@color/black"
+            android:background="@drawable/edittextbg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsdec">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/newslinktext"
+                android:layout_width="312dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:textColor="@color/black"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/savebtn"
@@ -120,7 +151,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newsdec"
+            app:layout_constraintTop_toBottomOf="@+id/newslink"
             app:layout_constraintVertical_bias="0.416"
             app:layout_constraintWidth_percent=".8"
             android:layout_marginTop="50dp"

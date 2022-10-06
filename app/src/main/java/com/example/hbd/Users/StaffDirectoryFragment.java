@@ -1,30 +1,30 @@
 package com.example.hbd.Users;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.hbd.Adapter.DonorUserAdapter;
-import com.example.hbd.Model.AppointmentModel;
-import com.example.hbd.Model.TestModel;
+import com.example.hbd.Adapter.StaffuserAdapter;
+import com.example.hbd.Adapter.UserAdapter;
 import com.example.hbd.Model.UserModel;
 import com.example.hbd.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -33,57 +33,79 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
-public class DonorUserFragment extends Fragment {
+
+public class StaffDirectoryFragment extends Fragment {
+
+
+    View v;
 
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
+
     RecyclerView recyclerView;
-    DonorUserAdapter donorUserAdapter;
+    FloatingActionButton floatingActionButton2;
+    StaffuserAdapter staffuserAdapter;
     List<UserModel> userModelList;
-    List<TestModel> testModelList;
-    DatabaseReference databaseReference;
+
     FirebaseFirestore firebaseFirestore;
-    FirebaseUser firebaseUser;
-    FirebaseAuth fAuth;
+    FirebaseUser firebaseUser1;
+    FirebaseAuth fAuth1;
     DatabaseReference databaseReference2;
-    String userID, uhos;
-    View v;
+    String userID, uhos2;
 
 
+    public StaffDirectoryFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         v = inflater.inflate(R.layout.fragment_donor_user, container, false);
+       v = inflater.inflate(R.layout.fragment_staff_directory, container, false);
 
         firebaseDatabase  = FirebaseDatabase.getInstance();
         firebaseStorage   = FirebaseStorage.getInstance();
-        recyclerView = v.findViewById(R.id.rvview2);
+        floatingActionButton2 = v.findViewById(R.id.adduserfloatbutton);
+        recyclerView = v.findViewById(R.id.rvview1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
+        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment adduser = new AddStaffFragment();
+                FragmentTransaction addappoint = getActivity().getSupportFragmentManager().beginTransaction();
+                addappoint.replace(R.id.container,adduser).commit();
+            }
+        });
+
+
         userModelList = new ArrayList<UserModel>();
-        donorUserAdapter = new DonorUserAdapter(DonorUserFragment.this,userModelList);
+        staffuserAdapter = new StaffuserAdapter(StaffDirectoryFragment.this,userModelList);
 
-        recyclerView.setAdapter(donorUserAdapter);
+        recyclerView.setAdapter(staffuserAdapter);
+
         firebaseFirestore = FirebaseFirestore.getInstance();
-        fAuth = FirebaseAuth.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        fAuth1 = FirebaseAuth.getInstance();
+        firebaseUser1 = FirebaseAuth.getInstance().getCurrentUser();
 
-        userID = firebaseUser.getUid();
+        userID = firebaseUser1.getUid();
         EventLis();
 
         return v;
     }
 
     private void EventLis() {
-
 
         databaseReference2 = FirebaseDatabase.getInstance().getReference("Users");
         databaseReference2.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -92,11 +114,11 @@ public class DonorUserFragment extends Fragment {
 
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 if(userModel != null){
-                    uhos = userModel.getUhos();
+                    uhos2 = userModel.getUhos();
 
                     firebaseFirestore.collection("User")
-                            .whereEqualTo("usertype", "Donor")
-                            .whereEqualTo("uhos", uhos)
+                            .whereEqualTo("usertype", "Staff")
+                            .whereEqualTo("uhos", uhos2)
                             .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
                                 public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -109,13 +131,14 @@ public class DonorUserFragment extends Fragment {
                                         if(documentChange.getType() == DocumentChange.Type.ADDED){
                                             userModelList.add(documentChange.getDocument().toObject(UserModel.class));
                                         }
-                                        donorUserAdapter.notifyDataSetChanged();
+                                        staffuserAdapter.notifyDataSetChanged();
 
                                     }
 
 
                                 }
                             });
+
                 }
             }
 
@@ -127,16 +150,8 @@ public class DonorUserFragment extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-
     }
+
 
 
 }

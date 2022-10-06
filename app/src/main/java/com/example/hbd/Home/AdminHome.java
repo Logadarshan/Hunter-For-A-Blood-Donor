@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hbd.Profile.DonorProfileFragment;
 import com.example.hbd.R;
+import com.example.hbd.Report.ReportFragment;
 import com.example.hbd.Users.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -17,6 +18,7 @@ public class AdminHome extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     DonorProfileFragment donorProfileFragment = new DonorProfileFragment();
     UserFragment userFragment = new UserFragment();
+    ReportFragment reportFragment = new ReportFragment();
 
 
 
@@ -38,6 +40,10 @@ public class AdminHome extends AppCompatActivity {
                     case R.id.Profile2:
                         // View Profile Page
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,donorProfileFragment).commit();
+                        return true;
+                    case R.id.Report:
+                        // View User list Page
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,reportFragment).commit();
                         return true;
                     case R.id.Users2:
                         // View User list Page

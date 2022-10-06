@@ -36,7 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Login extends AppCompatActivity {
 
 
-    ViewPager viewPager;
+
     TextInputLayout memail;
     TextInputLayout mpassword;
     TextView forgotpass;
@@ -113,7 +113,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        viewPager = findViewById(R.id.view_pager);
+
         memail = findViewById(R.id.email);
         mpassword = findViewById(R.id.password);
         forgotpass = findViewById(R.id.forgotpass);

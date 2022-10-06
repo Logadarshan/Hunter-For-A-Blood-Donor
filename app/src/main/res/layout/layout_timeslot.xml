@@ -25,8 +25,10 @@
             android:textSize="20dp"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:drawableLeft="@drawable/timeicon"
+            android:drawablePadding="25dp"
             android:fontFamily="@font/adamina"
-            android:gravity="center" />
+            android:gravity="left" />
 
         <TextView
             android:id="@+id/hoscap"
@@ -37,7 +39,9 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:fontFamily="@font/adamina"
-            android:gravity="center" />
+            android:drawableLeft="@drawable/capicon"
+            android:drawablePadding="25dp"
+            android:gravity="left" />
 
         <TextView
             android:id="@+id/hosava"
@@ -48,7 +52,9 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:fontFamily="@font/adamina"
-            android:gravity="center" />
+            android:drawableLeft="@drawable/avaicon"
+            android:drawablePadding="25dp"
+            android:gravity="left" />
 
 
     </LinearLayout>

@@ -113,35 +113,26 @@ public class UserFragment extends Fragment {
                     uhos2 = userModel.getUhos();
 
                     firebaseFirestore.collection("User")
-                            .whereNotEqualTo("usertype", "Donor")
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            .whereEqualTo("usertype", "Admin")
+                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    firebaseFirestore.collection("User")
-                                            .whereEqualTo("uhos", uhos2)
-                                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                                @Override
-                                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                                                    if(error != null){
-                                                        Log.e("Error", error.getMessage());
-                                                    }
-                                                    for (DocumentChange documentChange : value.getDocumentChanges()){
+                                    if(error != null){
+                                        Log.e("Error", error.getMessage());
+                                    }
+                                    for (DocumentChange documentChange : value.getDocumentChanges()){
 
-                                                        if(documentChange.getType() == DocumentChange.Type.ADDED){
-                                                            userModelList.add(documentChange.getDocument().toObject(UserModel.class));
-                                                        }
-                                                        userAdapter.notifyDataSetChanged();
+                                        if(documentChange.getType() == DocumentChange.Type.ADDED){
+                                            userModelList.add(documentChange.getDocument().toObject(UserModel.class));
+                                        }
+                                        userAdapter.notifyDataSetChanged();
 
-                                                    }
+                                    }
 
 
-                                                }
-                                            });
                                 }
                             });
-
 
                 }
             }

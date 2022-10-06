@@ -5,6 +5,12 @@
         android:id="@+id/Profile2"
         android:title="Profile"
         android:icon="@drawable/profileicon"/>
+
+    <item
+        android:id="@+id/Report"
+        android:title="Report"
+        android:icon="@drawable/reporticon"/>
+
     <item
         android:id="@+id/Users2"
         android:title="Users"

@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -96,7 +95,7 @@ public class ViewDonorProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Fragment duser = new DonorUserFragment();
+                Fragment duser = new DonorDirectoryFragment();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.container,duser).commit();
 

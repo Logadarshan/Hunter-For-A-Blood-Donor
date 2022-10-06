@@ -4,13 +4,14 @@ public class AppointmentModel {
 
     String appointmentid, usernameappoint, dataappointment, timeappointment, hospappointment, statusappointment,useridappointment;
     String appslotid,apploc,balslot;
+    String userblood;
 
 
     public AppointmentModel() {
     }
 
     public AppointmentModel(String appointmentid, String usernameappoint, String dataappointment, String timeappointment, String hospappointment, String statusappointment, String useridappointment
-    ,String appsloid, String apploc, String balslot ) {
+    ,String appsloid, String apploc, String balslot, String userblood ) {
         this.appointmentid = appointmentid;
         this.usernameappoint = usernameappoint;
         this.dataappointment = dataappointment;
@@ -21,6 +22,7 @@ public class AppointmentModel {
         this.appslotid = appsloid;
         this.apploc = apploc;
         this.balslot = balslot;
+        this.userblood = userblood;
     }
 
     public String getAppointmentid() {
@@ -102,5 +104,13 @@ public class AppointmentModel {
 
     public void setBalslot(String balslot) {
         this.balslot = balslot;
+    }
+
+    public String getUserblood() {
+        return userblood;
+    }
+
+    public void setUserblood(String userblood) {
+        this.userblood = userblood;
     }
 }

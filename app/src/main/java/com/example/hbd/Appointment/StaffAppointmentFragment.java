@@ -16,10 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.hbd.Model.HospitalModel;
 import com.example.hbd.Others.Common;
 import com.example.hbd.Profile.ViewHistoryFragment;
 import com.example.hbd.R;
@@ -32,8 +34,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -49,7 +54,7 @@ public class StaffAppointmentFragment extends Fragment {
     ImageButton appappointment1Btn, viewhistory1Btn,viewappointments,slotBtn, locationBtn;
     CardView cardView1;
     Button deleteapp1Btn1, changeapp1Btn1;
-    TextView hosptime1,hosploc1, hospdate1,hospstatus1,hospslot1,hospcity1,sbalslot1,hossappid;
+    TextView hosptime1,hosploc1, hospdate1,hospstatus1,hospslot1,hospcity1,sbalslot1,hossappid,hosnum;
     Activity context;
     FirebaseUser firebaseUser;
     FirebaseAuth fAuth;
@@ -83,6 +88,7 @@ public class StaffAppointmentFragment extends Fragment {
         hospslot1 = v.findViewById(R.id.hosslotid1);
         sbalslot1 = v.findViewById(R.id.hosbalslot1);
         hossappid = v.findViewById(R.id.hosappid1);
+        hosnum= v.findViewById(R.id.hosconnum);
         appappointment1Btn = v.findViewById(R.id.addappoint1Btn);
         viewhistory1Btn = v.findViewById(R.id.viewhistory1Btn);
         viewappointments = v.findViewById(R.id.viewdonorappointmentsBtn);
@@ -288,6 +294,11 @@ public class StaffAppointmentFragment extends Fragment {
                                     hospslot1.setText(document.getString("appslotid"));
                                     sbalslot1.setText(document.getString("balslot"));
                                     hossappid.setText(document.getString("appointmentid"));
+
+                                    loadnum();
+
+
+
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                 }
 
@@ -299,6 +310,28 @@ public class StaffAppointmentFragment extends Fragment {
                         }
                     }
                 });
+
+
+    }
+
+    private void loadnum() {
+
+
+
+
+        DocumentReference documentReference = firebaseFirestore.collection("State").document(hospcity1.getText().toString())
+                .collection("Branch")
+                .document(hosploc1.getText().toString());
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+
+                hosnum.setText(value.getString("num"));
+
+            }
+        });
+
 
     }
 

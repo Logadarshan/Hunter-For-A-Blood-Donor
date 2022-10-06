@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/appointmentbg"
+    tools:context=".Report.ReportFragment">
+
+    <TextView
+        android:id="@+id/title_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="31dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Report"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/selectbtn"
+        android:layout_below="@+id/title_app"
+        android:layout_marginTop="130dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <ImageButton
+            android:id="@+id/hosBtn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/hospitalimg"
+            android:background="@drawable/newsbg"
+            android:scaleType="fitXY"
+            android:layout_margin="10dp"
+
+            />
+
+        <ImageButton
+            android:id="@+id/userBtn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/userimg"
+            android:background="@drawable/newsbg"
+            android:scaleType="fitXY"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/selectbtn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectbtn"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/title_hospitals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="67dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="179dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="Hospital"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/title_userss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="53dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="Users"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/selectbtn1"
+        android:layout_below="@+id/selectbtn2"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+
+
+        <ImageButton
+            android:id="@+id/campBtn1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/camp"
+            android:background="@drawable/newsbg"
+            android:scaleType="fitXY"
+            android:layout_margin="10dp"
+            />
+        <ImageButton
+            android:id="@+id/viewappBtn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/apps"
+            android:scaleType="fitXY"
+            android:background="@drawable/newsbg"
+            android:layout_margin="10dp"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/selectbtn3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectbtn1"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/title_campaign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="63dp"
+            android:layout_marginTop="-3dp"
+            android:layout_marginEnd="180dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="Campaign"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/title_viewappointmenthistory"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="180dp"
+            android:layout_marginTop="-3dp"
+            android:layout_marginEnd="65dp"
+            android:fontFamily="@font/aclonica"
+            android:paddingBottom="5dp"
+            android:text="Appointments"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
