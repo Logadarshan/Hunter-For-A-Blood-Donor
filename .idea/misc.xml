@@ -75,12 +75,16 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/drawable/profilebg.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/font/balthazar.xml" value="0.28020833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_admin_email_pass.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_admin_home.xml" value="0.23278985507246377" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_appointment.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_blood_banks.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_deleted_account.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_donor_home.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_map.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_map_fragment_demo.xml" value="0.2359375" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_map_view_demo.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_maps.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_signup.xml" value="0.264" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/activity_staff_appointment.xml" value="0.25" />
@@ -106,6 +110,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_appointment_step4.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_change_password.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_directory.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_donor_appointment.xml" value="0.2427536231884058" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_donor_directory.xml" value="0.245018115942029" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_donor_news_view.xml" value="0.24864130434782608" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_donor_profile.xml" value="0.25" />
@@ -120,7 +125,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_slot.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_slot_details.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_staff_all_appointment.xml" value="0.23867753623188406" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_staff_appointment.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_staff_appointment.xml" value="0.264" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_staff_confirmed_appointment.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_staff_directory.xml" value="0.245018115942029" />
         <entry key="..\:/Users/user/AndroidStudioProjects/HBDAPP/MobileApp/app/src/main/res/layout/fragment_staff_upcoming_appointment.xml" value="0.25" />

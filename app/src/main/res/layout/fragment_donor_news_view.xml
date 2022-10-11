@@ -29,6 +29,6 @@
         android:text="News Feed"
         android:textColor="@color/black"
         android:textAlignment="viewStart"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

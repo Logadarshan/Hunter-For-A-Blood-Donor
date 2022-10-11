@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/appointmentbg"
+    android:background="#FF8489"
     tools:context=".Report.ReportFragment">
 
     <TextView
@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="31dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="31dp"
         android:fontFamily="@font/aclonica"
         android:text="Report"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:id="@+id/selectbtn"
@@ -108,35 +108,33 @@
 
     <LinearLayout
         android:id="@+id/selectbtn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/selectbtn2"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:background="@color/white">
-
+        android:orientation="horizontal">
 
 
         <ImageButton
             android:id="@+id/campBtn1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/camp"
+            android:layout_margin="10dp"
             android:background="@drawable/newsbg"
             android:scaleType="fitXY"
-            android:layout_margin="10dp"
-            />
+            android:src="@drawable/camp" />
+
         <ImageButton
             android:id="@+id/viewappBtn"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/apps"
-            android:scaleType="fitXY"
-            android:background="@drawable/newsbg"
             android:layout_margin="10dp"
-            />
+            android:background="@drawable/newsbg"
+            android:scaleType="fitXY"
+            android:src="@drawable/apps" />
     </LinearLayout>
 
     <RelativeLayout
@@ -171,14 +169,14 @@
 
         <TextView
             android:id="@+id/title_viewappointmenthistory"
-            android:layout_width="115dp"
+            android:layout_width="163dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="180dp"
+            android:layout_marginStart="165dp"
             android:layout_marginTop="-3dp"
-            android:layout_marginEnd="65dp"
+            android:layout_marginEnd="43dp"
             android:fontFamily="@font/aclonica"
             android:paddingBottom="5dp"
             android:text="Appointments"

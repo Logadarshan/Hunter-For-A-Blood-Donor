@@ -13,14 +13,13 @@
         android:layout_height="match_parent" >
 
 
-
         <TextView
             android:id="@+id/title_camp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="31dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="31dp"
             android:fontFamily="@font/aclonica"
             android:text="New Campaign Details"
             android:textAlignment="viewStart"

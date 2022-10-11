@@ -39,12 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="27dp"
         android:fontFamily="@font/aclonica"
         android:text="News Feed"
-        android:layout_marginStart="20dp"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

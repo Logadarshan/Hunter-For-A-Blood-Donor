@@ -4,11 +4,15 @@ buildscript {
         google()
         mavenCentral()
         maven { url 'https://oss.jfrog.org/artifactory/oss-snapshot-local' }
+        // Configure the Maven repository address for the HMS Core SDK.
+        maven {url 'https://developer.huawei.com/repo/'}
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.0"
         classpath 'com.google.gms:google-services:4.3.12'
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
+        // Add the AppGallery Connect plugin configuration. Please refer to AppGallery Connect Plugin Dependency to select a proper plugin version.
+        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
 
 
 
@@ -16,6 +20,10 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
+
+
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

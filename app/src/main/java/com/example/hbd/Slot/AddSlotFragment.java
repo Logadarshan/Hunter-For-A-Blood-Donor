@@ -178,7 +178,7 @@ public class AddSlotFragment extends Fragment {
 
 
 
-                        slottimes.setText( String.format("%02d%02d",hourOfDay,minute));
+                        slottimes.setText( String.format("%02d:%02d",hourOfDay,minute));
                         slottimes1.setText(formatter.format(ts)+String.format("%02d%02d",hourOfDay,minute));
 
 

@@ -28,13 +28,13 @@
         android:id="@+id/title_donoruser"
         android:layout_width="match_parent"
         android:layout_height="58dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="27dp"
         android:fontFamily="@font/aclonica"
         android:text="Donor List"
         android:textAlignment="viewStart"
-        android:layout_marginStart="20dp"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

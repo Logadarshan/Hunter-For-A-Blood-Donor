@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/appointmentbg"
+    android:background="#FF8489"
     tools:context=".Report.AddHospitalFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/appointmentbg">
+        android:background="#FF8489">
 
         <TextView
             android:id="@+id/addhos"
@@ -26,7 +26,7 @@
             android:inputType="textPersonName"
             android:text="Add Hospital"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +67,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/hosnametext"
-                android:layout_width="300dp"
+                android:layout_width="260dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
                 android:background="@color/white" />
@@ -99,7 +99,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/hosaddressext"
-                android:layout_width="300dp"
+                android:layout_width="260dp"
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:textColor="@color/black"/>
@@ -130,7 +130,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/hosnumtext"
-                android:layout_width="300dp"
+                android:layout_width="260dp"
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:textColor="@color/black"/>

@@ -7,8 +7,7 @@
     android:layout_marginBottom="20dp"
     android:foreground="?attr/selectableItemBackground"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/cardbg">
+    android:layout_height="wrap_content">
 
 
     <LinearLayout
@@ -17,7 +16,6 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:orientation="vertical"
-        android:background="@drawable/cardbg"
         android:padding="20dp">
 
         <TextView
@@ -131,7 +129,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFC3A0"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal"

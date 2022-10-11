@@ -126,7 +126,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/icicon"
@@ -155,7 +155,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:textColor="@color/black"
@@ -185,7 +185,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:textColor="@color/black"
@@ -214,7 +214,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/dob1"
-                    android:layout_width="285dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:focusable="false"
                     android:background="@color/white"
@@ -335,7 +335,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="20dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_below="@+id/textmarriage1" >
 
                 <RadioButton
@@ -356,8 +356,8 @@
                 <RadioButton
                     android:id="@+id/radio_divorceorwidow1"
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:text="Divorce\n /Widowed"
+                    android:layout_height="wrap_content"
+                    android:text="Divorce/Widowed"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_marginLeft="3dp"/>
@@ -383,7 +383,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/occupationicon"
@@ -410,7 +410,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:textColor="@color/black"
@@ -437,7 +437,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/homeicon"
@@ -464,7 +464,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/faxicon"
@@ -491,7 +491,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/addressicon"
@@ -518,7 +518,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/stateicon"
@@ -545,7 +545,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="285dp"
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/zipicon"
@@ -573,7 +573,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="260dp"
+                    android:layout_width="257dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:drawableLeft="@drawable/orgicon"
@@ -611,7 +611,7 @@
                 android:layout_marginBottom="7dp"
                 android:text="Please Click this if you wish to change the password."
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="13dp"
                 android:textStyle="bold" />
 
             <TextView

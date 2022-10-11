@@ -260,7 +260,7 @@
                 android:id="@+id/marriage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_below="@+id/textmarriage" >
 
                 <RadioButton
@@ -281,8 +281,8 @@
                 <RadioButton
                     android:id="@+id/radio_divorceorwidow"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:text="Divorce\n /Widowed"
+                    android:layout_height="wrap_content"
+                    android:text="Divorce/Widowed"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_marginLeft="3dp"/>

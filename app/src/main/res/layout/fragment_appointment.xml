@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/appointmentbg"
+    android:background="#FF8489"
     tools:context=".Appointment.AppointmentFragment">
 
 
@@ -12,8 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/appointmentbg" >
-
+        android:background="#FF8489">
 
 
         <TextView
@@ -21,34 +20,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="31dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="31dp"
             android:fontFamily="@font/aclonica"
             android:text="Appointment"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/selectbtn"
-            android:layout_below="@+id/title_app"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/title_app"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/white"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:background="@color/white">
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/addappointBtn"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/makeapp"
+                android:layout_margin="10dp"
                 android:background="@drawable/newsbg"
                 android:scaleType="fitXY"
-                android:layout_margin="10dp"
+                android:src="@drawable/makeapp"
 
                 />
 
@@ -56,20 +55,19 @@
                 android:id="@+id/tracklocationBtn"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/location"
+                android:layout_margin="10dp"
                 android:background="@drawable/newsbg"
                 android:scaleType="fitXY"
-                android:layout_margin="10dp"
-                />
+                android:src="@drawable/nearby" />
+
             <ImageButton
                 android:id="@+id/viewhistoryBtn"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/history"
-                android:scaleType="fitXY"
-                android:background="@drawable/newsbg"
                 android:layout_margin="10dp"
-                />
+                android:background="@drawable/newsbg"
+                android:scaleType="fitXY"
+                android:src="@drawable/history" />
         </LinearLayout>
 
 
@@ -101,7 +99,7 @@
                 android:text="Add \n Appointment"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="10sp" />
+                android:textSize="8dp" />
 
 
             <TextView
@@ -119,7 +117,7 @@
                 android:text="Track \n\n Location"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="10sp" />
+                android:textSize="8dp" />
 
 
             <TextView
@@ -137,7 +135,7 @@
                 android:text="View \n\n History"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="10sp" />
+                android:textSize="8dp" />
 
 
         </RelativeLayout>
@@ -171,25 +169,25 @@
                 android:background="@drawable/logtab"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="13dp" />
 
 
 
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            app:cardCornerRadius="5dp"
             android:id="@+id/cardupcomingapp"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/selectbtn1"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_below="@+id/selectbtn1"
-            app:cardBackgroundColor="@color/white">
+            android:layout_marginBottom="40dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:visibility="invisible"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="5dp">
 
 
             <LinearLayout
@@ -197,63 +195,63 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:background="@color/white"
                 android:orientation="vertical"
-                android:padding="20dp"
-                android:background="@color/white">
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/hosstatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Pending...."
-                    android:textSize="20dp"
-                    android:textColor="#ff0000"
-                    android:textStyle="bold"
                     android:fontFamily="@font/adamina"
-                    android:gravity="right" />
+                    android:gravity="right"
+                    android:text="Pending...."
+                    android:textColor="#ff0000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/hosdateapp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Date"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/adamina"
-                    android:drawablePadding="10dp"
                     android:drawableLeft="@drawable/dateicon"
-                    android:gravity="left" />
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/adamina"
+                    android:gravity="left"
+                    android:text="Date"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/hostimeapp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Time"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/adamina"
-                    android:drawablePadding="10dp"
                     android:drawableLeft="@drawable/timeicon"
-                    android:gravity="left" />
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/adamina"
+                    android:gravity="left"
+                    android:text="Time"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/hoslocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Place"
-                    android:textSize="17dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/adamina"
-                    android:drawablePadding="10dp"
                     android:drawableLeft="@drawable/orgicon"
-                    android:gravity="left" />
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/adamina"
+                    android:gravity="left"
+                    android:text="Place"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/hoscity"
@@ -274,10 +272,11 @@
                     android:fontFamily="@font/adamina"
                     android:gravity="right"
                     android:text=""
-                    android:visibility="invisible"
                     android:textColor="#ff0000"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
+
                 <TextView
                     android:id="@+id/hosbalslot"
                     android:layout_width="match_parent"
@@ -285,11 +284,10 @@
                     android:fontFamily="@font/adamina"
                     android:gravity="right"
                     android:text=""
-                    android:visibility="invisible"
                     android:textColor="#ff0000"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
-
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
 
 
             </LinearLayout>
@@ -297,31 +295,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="220dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="220dp"
                 android:layout_marginEnd="20dp"
+                android:background="@color/white"
                 android:orientation="horizontal"
-                android:weightSum="2"
                 android:padding="20dp"
-                android:background="@color/white">
+                android:weightSum="2">
 
                 <Button
                     android:id="@+id/appupdateBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/buttonbg"
                     android:layout_marginStart="20dp"
-                    android:text="Change"/>
+                    android:background="@drawable/buttonbg"
+                    android:text="Change" />
+
                 <Button
                     android:id="@+id/appdeletebtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
                     android:background="@drawable/buttonbg"
-                    android:layout_marginStart="70dp"
-                    android:text="Delete"/>
-
-
-
+                    android:text="Delete" />
 
 
             </LinearLayout>

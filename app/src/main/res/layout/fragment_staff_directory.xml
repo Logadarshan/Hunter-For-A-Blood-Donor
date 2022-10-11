@@ -51,6 +51,6 @@
         android:text="Staff List"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

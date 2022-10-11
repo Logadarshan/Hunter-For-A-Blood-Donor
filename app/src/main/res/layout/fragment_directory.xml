@@ -17,7 +17,7 @@
         android:text="Directory"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:id="@+id/selectbtn"

@@ -32,6 +32,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.huawei.hms.ads.AdParam;
+import com.huawei.hms.ads.BannerAdSize;
+import com.huawei.hms.ads.HwAds;
+import com.huawei.hms.ads.banner.BannerView;
 
 public class Login extends AppCompatActivity {
 
@@ -111,7 +115,13 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        HwAds.init(this);
 
+        BannerView bannerView = findViewById(R.id.hw_banner_view12);
+        bannerView.setAdId("testw6vs28auh3");
+        bannerView.setBannerAdSize(BannerAdSize.BANNER_SIZE_360_57);
+        AdParam adParam = new AdParam.Builder().build();
+        bannerView.loadAd(adParam);
 
 
         memail = findViewById(R.id.email);

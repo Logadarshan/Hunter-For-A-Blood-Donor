@@ -13,14 +13,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hbd.Interface.IAllCityLoadListener;
+import com.example.hbd.Interface.IAllHosLoadListener;
+import com.example.hbd.Interface.IAllStateLoadListener;
 import com.example.hbd.Login;
+import com.example.hbd.Model.HospitalModel;
 import com.example.hbd.Model.UserModel;
+import com.example.hbd.Others.Common;
+import com.example.hbd.Others.SpacesItemDecoration;
 import com.example.hbd.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,16 +41,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class AddUserFragment extends Fragment {
+public class AddUserFragment extends Fragment implements IAllStateLoadListener, IAllHosLoadListener {
 
 
     EditText adminstaffname,adminstaffemail,adminstaffpassword,adminstafforg,adminstaffostate;
@@ -64,11 +81,31 @@ public class AddUserFragment extends Fragment {
     String uhos1, ostate1;
 
 
+    CollectionReference allcity;
+    CollectionReference allhos;
+
+
+    @BindView(R.id.userostate12)
+    MaterialSpinner statespinner;
+    @BindView(R.id.userhos12)
+    MaterialSpinner hosspinner;
+
+    RadioGroup radioGroupUser;
+    RadioButton radioButtonUser;
+
+
+
+    IAllStateLoadListener iAllStateLoadListener;
+    IAllHosLoadListener iAllHosLoadListener;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        allcity = FirebaseFirestore.getInstance().collection("State");
+        iAllStateLoadListener = this;
+        iAllHosLoadListener = this;
 
     }
 
@@ -83,16 +120,18 @@ public class AddUserFragment extends Fragment {
         adminstaffname = V.findViewById(R.id.uusername);
         adminstaffemail = V.findViewById(R.id.useremail);
         adminstaffpassword = V.findViewById(R.id.userpassword);
-        adminstaffostate = V.findViewById(R.id.userostate12);
-        adminstafforg = V.findViewById(R.id.useruhos12);
         addadminstaff = V.findViewById(R.id.adduserdataBtn);
         dialog = new Dialog(this.getContext());
         firebaseFirestore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+
+        radioGroupUser = V.findViewById(R.id.usertypeadmin);
+        radioGroupUser.clearCheck();
         userID = firebaseUser.getUid();
-        setCity();
+
+        loadAllCity();
         // add admin and staff details
         addadminstaff.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,11 +141,9 @@ public class AddUserFragment extends Fragment {
                 checkEmail();
                  uemail = adminstaffemail.getText().toString();
                  upassword = adminstaffpassword.getText().toString();
-                 uhos1 = adminstafforg.getText().toString();
-                 ostate1 =adminstaffostate.getText().toString();
 
 
-                adddetails(uemail,upassword,uhos1,ostate1);
+                adddetails(uemail,upassword);
 
             }
         });
@@ -116,36 +153,35 @@ public class AddUserFragment extends Fragment {
         return V;
     }
 
-    private void setCity() {
-
-        databaseReference2 = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference2.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void loadAllCity() {
+        allcity.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                UserModel userModel = snapshot.getValue(UserModel.class);
-                if(userModel != null){
-                    uhos = userModel.getUhos();
-                    ostate = userModel.getOstate();
+                if(task.isSuccessful()){
 
-                    adminstaffostate.setText(ostate);
-                    adminstafforg.setText(uhos);
+                    List<String> list = new ArrayList<>();
+                    list.add("Please Choose City");
+                    for(QueryDocumentSnapshot documentSnapshot: task.getResult())
+                        list.add(documentSnapshot.getId());
+                    iAllStateLoadListener.onAllStateLoadSuccess(list);
                 }
+
             }
-
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onFailure(@NonNull Exception e) {
+                iAllStateLoadListener.onAllStateLoadFailed(e.getMessage());
             }
         });
 
 
 
-
-
     }
 
-    private void adddetails(String uemail, String upassword, String uhos1, String ostate1) {
+
+
+    private void adddetails(String uemail, String upassword) {
 
         FirebaseAuth.getInstance();
         fAuth.createUserWithEmailAndPassword(uemail,upassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -157,12 +193,14 @@ public class AddUserFragment extends Fragment {
                     adduser = firebaseUser.getUid();
                     firebaseDatabase = FirebaseDatabase.getInstance();
 
+                    int selectedUserTypeId = radioGroupUser.getCheckedRadioButtonId();
+                    radioButtonUser = V.findViewById(selectedUserTypeId);
 
                     Map<String,Object> user = new HashMap<>();
-                    user.put("ostate",ostate1);
-                    user.put("usertype","Admin");
+                    user.put("ostate",statespinner.getText().toString());
+                    user.put("usertype", radioButtonUser.getText().toString());
                     user.put("uname",adminstaffname.getText().toString());
-                    user.put("uhos",uhos1);
+                    user.put("uhos",hosspinner.getText().toString());
                     user.put("uemail",uemail);
                     user.put("upassword",upassword);
                     user.put("userid",adduser);
@@ -210,16 +248,7 @@ public class AddUserFragment extends Fragment {
                     dialog.show();
 
 
-
-
                 }
-
-
-
-
-
-
-
 
             }
         });
@@ -249,5 +278,64 @@ public class AddUserFragment extends Fragment {
     }
 
 
+    @Override
+    public void onAllStateLoadSuccess(List<String> stateList) {
+        statespinner.setItems(stateList);
+        statespinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                if (position > 0){
+                    loadHosp(item.toString());
+                }
+            }
+        });
+    }
 
+    private void loadHosp(String cityname) {
+
+
+        Common.city = cityname;
+
+        allhos= FirebaseFirestore.getInstance()
+                .collection("State").document(cityname)
+                .collection("Branch");
+
+
+        allhos.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+
+                    List<String> list = new ArrayList<>();
+                    list.add("Please Choose Hospital");
+                    for(QueryDocumentSnapshot documentSnapshot: task.getResult())
+                        list.add(documentSnapshot.getId());
+                    iAllHosLoadListener.onAllHosLoadSuccess(list);
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                iAllHosLoadListener.onAllHosLoadFailed(e.getMessage());
+            }
+        });
+
+
+    }
+
+    @Override
+    public void onAllStateLoadFailed(String message) {
+        Toast.makeText(getActivity(),"",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAllHosLoadSuccess(List<String> hosList) {
+        hosspinner.setItems(hosList);
+    }
+
+    @Override
+    public void onAllHosLoadFailed(String message) {
+        Toast.makeText(getActivity(),"",Toast.LENGTH_SHORT).show();
+    }
 }

@@ -27,7 +27,7 @@
             android:inputType="textPersonName"
             android:text="Add News"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +68,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/newstitletext"
-                android:layout_width="312dp"
+                android:layout_width="260dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
                 android:background="@color/white" />
@@ -100,7 +100,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/newsdesctext"
-                android:layout_width="312dp"
+                android:layout_width="260dp"
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:textColor="@color/black"/>
@@ -131,7 +131,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/newslinktext"
-                android:layout_width="312dp"
+                android:layout_width="260dp"
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:textColor="@color/black"/>
